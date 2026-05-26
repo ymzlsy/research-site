@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FDE 落地可行性研究 — Research by 杨明哲</title>
-  <meta name="description" content="Forward Deployed Engineer 模式深度调研：从 Palantir 到捷安高科的落地路径">
+  <title>FDE 落地可行性研究 — Karaithy Research</title>
+  <meta name="description" content="Forward Deployed Engineer 模式深度调研：从 Palantir 到企业落地的可行路径">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
     <a href="../../index.html" class="site-logo">
       <span class="logo-icon">R</span>
       <span>Research</span>
-      <span class="logo-text-sub">by 杨明哲</span>
+      <span class="logo-text-sub">by Karaithy</span>
     </a>
     <div class="header-nav">
       <a href="../../index.html">首页</a>
@@ -82,10 +82,10 @@
 <!-- Meta -->
 <div class="article-meta">
   <div class="meta-author">
-    <div class="meta-avatar">杨</div>
+    <div class="meta-avatar">K</div>
     <div>
-      <div class="meta-name">杨明哲</div>
-      <div class="meta-role">产品经理——培训服务产品线 · 捷安高科</div>
+      <div class="meta-name">Karaithy</div>
+      <div class="meta-role">Deep Research</div>
     </div>
   </div>
   <span class="meta-dot">·</span>
@@ -1071,8 +1071,8 @@
 <hr style="margin:48px 0 24px;border:none;border-top:1px solid var(--border-color);">
 
 <p style="text-align:center;color:var(--text-tertiary);font-size:0.85rem;">
-  © 2026 杨明哲 · 产品经理——培训服务产品线 · 捷安高科（300845.SZ）<br>
-  本文为个人调研，不代表公司官方立场。<br>
+  © 2026 Karaithy Research<br>
+  本文为个人调研。<br>
   <a href="../../index.html">← 返回 Research 首页</a>
 </p>
 
@@ -1228,9 +1228,10 @@ function initChart() {
         legend: { labels: { color: textColor, font: { size: 11 } } },
         tooltip: {
           callbacks: {
-            label: function(ctx) {
-              if (ctx.dataset.type === 'line') return ctx.dataset.label + ': ' + ctx.parsed.y + '%';
-              return ctx.dataset.label + ': $' + ctx.parsed.y + 'M';
+            label: function(c) {
+              var dollar = String.fromCharCode(36);
+              if (c.dataset.type === 'line') return c.dataset.label + ': ' + c.parsed.y + '%';
+              return c.dataset.label + ': ' + dollar + c.parsed.y + 'M';
             }
           }
         }
@@ -1238,7 +1239,7 @@ function initChart() {
       scales: {
         x: { ticks: { color: textColor }, grid: { display: false } },
         y: {
-          ticks: { color: textColor, callback: v => '$' + v + 'M' },
+          ticks: { color: textColor, callback: function(v) { return String.fromCharCode(36) + v + 'M'; } },
           grid: { color: gridColor },
           title: { display: true, text: '收入（$M）', color: textColor }
         },
