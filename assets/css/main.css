@@ -779,7 +779,7 @@ img { max-width: 100%; height: auto; }
   transition: all var(--transition);
 }
 .article-card:first-child { border-top: 1px solid var(--border-color); }
-.article-card:hover { padding-left: 8px; }
+.article-card:hover { transform: translateX(8px); }
 .article-card-body { flex: 1; }
 .article-card-tag {
   display: inline-block;
