@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research — 杨明哲</title>
+  <meta name="description" content="杨明哲的深度调研合辑 — AI 应用、企业数字化、前线工程方法论">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">
+      <span class="logo-icon">R</span>
+      <span>Research</span>
+      <span class="logo-text-sub">by 杨明哲</span>
+    </a>
+    <div class="header-nav">
+      <a href="index.html" class="active">首页</a>
+      <a href="articles/fde-deep-dive/index.html">FDE 调研</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">🌙</button>
+    </div>
+  </div>
+</header>
+
+<!-- Main -->
+<div class="home-layout">
+
+  <!-- Hero -->
+  <section class="home-hero">
+    <h1>深度调研与思考</h1>
+    <p class="subtitle">从产品经理视角出发，围绕 AI 落地、企业数字化转型、前线工程方法论，进行有深度、可验证、能落地的调研分析。</p>
+    <div class="author-badge">
+      <span style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#5046e5,#8b5cf6);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:0.7rem;font-weight:700;">杨</span>
+      杨明哲 · 产品经理——培训服务产品线 · 捷安高科
+    </div>
+  </section>
+
+  <!-- Latest Research -->
+  <section>
+    <p class="section-title">最新调研</p>
+    <div class="article-list">
+
+      <article class="article-card">
+        <div class="article-card-body">
+          <span class="article-card-tag">深度调研 · FDE</span>
+          <h3><a href="articles/fde-deep-dive/index.html">Forward Deployed Engineer：从 Palantir 到捷安高科的落地可行性研究</a></h3>
+          <p>FDE 模式在 AI 时代的全面复兴，Palantir 如何用 FDE 模式实现 85% 的营收增速，以及为什么捷安高科的业务结构天然适合这套方法论。包含 Ontology 技术架构解析、国内外实践对比、六个月落地路径。</p>
+          <div class="article-card-meta">
+            <span>2026-05-24</span>
+            <span>·</span>
+            <span>约 25 分钟阅读</span>
+            <span>·</span>
+            <span>12,000+ 字</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Placeholder for future articles -->
+      <!--
+      <article class="article-card">
+        <div class="article-card-body">
+          <span class="article-card-tag">方法论</span>
+          <h3><a href="#">AI Coding 工作流：从个人实践到团队推广</a></h3>
+          <p>Claude Code、Codex、飞书智能体三条技术路线的融合实践...</p>
+          <div class="article-card-meta">
+            <span>即将发布</span>
+          </div>
+        </div>
+      </article>
+      -->
+
+    </div>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer style="text-align:center;padding:40px 20px;border-top:1px solid var(--border-color);font-size:0.8rem;color:var(--text-tertiary);">
+  <p>© 2026 杨明哲 · 产品经理——培训服务产品线 · 捷安高科（300845.SZ）</p>
+  <p style="margin-top:6px;">Built with care. Powered by curiosity.</p>
+</footer>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+// Restore theme
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  if (savedTheme === 'dark') document.querySelector('.theme-toggle').textContent = '☀️';
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "research-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8780", "--directory", "/Users/apple/Desktop/ja_project/project_on/260517-AI应用分享/research-site"],
+      "port": 8780,
+      "autoPort": false
+    }
+  ]
+}
