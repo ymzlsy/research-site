@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【标题】 — Research · 杨明哲</title>
+  <meta name="description" content="【一句话摘要】">
+  <!-- Open Graph -->
+  <meta property="og:title" content="【标题】">
+  <meta property="og:description" content="【一句话摘要】">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://research.karaithy.com/articles/【slug】/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+
+<!-- Reading Progress -->
+<div class="reading-progress" id="readingProgress"></div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../../index.html" class="site-logo">
+      <span class="logo-icon">R</span>
+      <span>Research</span>
+      <span class="logo-text-sub">by 杨明哲</span>
+    </a>
+    <div class="header-nav">
+      <a href="../../index.html">首页</a>
+      <a href="#" class="active">【短标题】</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">🌙</button>
+    </div>
+  </div>
+</header>
+
+<div class="article-layout">
+
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <p class="sidebar-title">目录</p>
+
+      <a href="#executive-summary" class="sidebar-link active">执行摘要</a>
+
+      <!-- 按章节添加导航链接 -->
+      <a href="#ch1" class="sidebar-link">1. 章节标题</a>
+      <a href="#ch1-1" class="sidebar-link sub">1.1 小节标题</a>
+
+      <a href="#appendix" class="sidebar-link">附录</a>
+    </div>
+  </nav>
+
+  <!-- Mobile sidebar toggle -->
+  <button class="sidebar-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰ 目录</button>
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <article class="article-body">
+
+      <!-- Article Header -->
+      <h1>【完整标题】</h1>
+
+      <p class="lead">【开头导语，1-2 句话概括全文核心论点】</p>
+
+      <div class="author-block">
+        <div class="author-avatar">杨</div>
+        <div>
+          <strong>杨明哲</strong><br>
+          <span>产品经理——培训服务产品线 · 捷安高科</span><br>
+          <span style="color:var(--text-tertiary)">【发布日期】 · 约 XX 分钟阅读</span>
+        </div>
+      </div>
+
+      <!-- Executive Summary -->
+      <h2 id="executive-summary">执行摘要</h2>
+
+      <div class="callout callout-info">
+        <div class="callout-title">一句话结论</div>
+        <p>【核心结论，不超过 3 行】</p>
+      </div>
+
+      <!-- 关键数据 -->
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-number">XX%</div>
+          <div class="stat-label">指标说明</div>
+        </div>
+        <!-- 可添加更多 stat-card -->
+      </div>
+
+      <!-- Chapter 1 -->
+      <h2 id="ch1">1. 章节标题</h2>
+      <h3 id="ch1-1">1.1 小节标题</h3>
+      <p>正文内容...</p>
+
+      <!-- 常用组件示例 -->
+
+      <!-- 表格 -->
+      <!--
+      <table>
+        <thead><tr><th>列1</th><th>列2</th><th>列3</th></tr></thead>
+        <tbody><tr><td>数据</td><td>数据</td><td>数据</td></tr></tbody>
+      </table>
+      -->
+
+      <!-- 手风琴 -->
+      <!--
+      <div class="accordion">
+        <button class="accordion-toggle" onclick="this.parentElement.classList.toggle('open')">
+          标题 <span class="accordion-icon">▸</span>
+        </button>
+        <div class="accordion-body"><p>展开内容</p></div>
+      </div>
+      -->
+
+      <!-- 提示框 -->
+      <!--
+      <div class="callout callout-warn">
+        <div class="callout-title">注意</div>
+        <p>警告内容</p>
+      </div>
+      -->
+
+      <!-- 流程图 -->
+      <!--
+      <div class="flow-chart">
+        <span class="flow-node">步骤1</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-node">步骤2</span>
+      </div>
+      -->
+
+      <!-- Appendix -->
+      <h2 id="appendix">附录</h2>
+      <h3>参考资料</h3>
+      <ol>
+        <li><a href="#" target="_blank">参考链接 1</a></li>
+      </ol>
+
+    </article>
+  </div>
+</div>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Footer -->
+<footer style="text-align:center;padding:40px 20px;border-top:1px solid var(--border-color);font-size:0.8rem;color:var(--text-tertiary);">
+  <p>&copy; 2026 杨明哲 · 产品经理——培训服务产品线 · 捷安高科（300845.SZ）</p>
+</footer>
+
+<script>
+// Theme toggle
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  if (savedTheme === 'dark') document.querySelector('.theme-toggle').textContent = '☀️';
+}
+
+// Reading progress
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('readingProgress').style.width = (window.scrollY / h * 100) + '%';
+
+  // Back to top
+  document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+
+  // Active sidebar link
+  const sections = document.querySelectorAll('h2[id], h3[id]');
+  let current = '';
+  sections.forEach(s => { if (s.getBoundingClientRect().top < 120) current = s.id; });
+  document.querySelectorAll('.sidebar-link').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+
+</body>
+</html>
