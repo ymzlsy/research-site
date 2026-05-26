@@ -54,12 +54,12 @@
     <a href="#ch3-2" class="sidebar-link sub">3.2 硅谷的 FDE 扩散</a>
     <a href="#ch3-3" class="sidebar-link sub">3.3 中国的类 FDE 实践</a>
     <a href="#ch3-4" class="sidebar-link sub">3.4 批评与局限</a>
-    <a href="#ch4" class="sidebar-link">4. 适配：捷安为什么天然适合</a>
-    <a href="#ch4-1" class="sidebar-link sub">4.1 业务契合度分析</a>
-    <a href="#ch4-2" class="sidebar-link sub">4.2 战略方向映射</a>
-    <a href="#ch4-3" class="sidebar-link sub">4.3 AI 职教平台 = 试验田</a>
+    <a href="#ch4" class="sidebar-link">4. 适配：什么企业天然适合</a>
+    <a href="#ch4-1" class="sidebar-link sub">4.1 适配度评估框架</a>
+    <a href="#ch4-2" class="sidebar-link sub">4.2 AI 战略映射</a>
+    <a href="#ch4-3" class="sidebar-link sub">4.3 垂类 AI 平台 = 试验田</a>
     <a href="#ch5" class="sidebar-link">5. 路径：从 0 到 1 怎么落地</a>
-    <a href="#ch5-1" class="sidebar-link sub">5.1 先做后说策略</a>
+    <a href="#ch5-1" class="sidebar-link sub">5.1 行为先行策略</a>
     <a href="#ch5-2" class="sidebar-link sub">5.2 谁最适合转型 FDE</a>
     <a href="#ch5-3" class="sidebar-link sub">5.3 AI 工程的演进阶段</a>
     <a href="#ch5-4" class="sidebar-link sub">5.4 AI Coding 加速器</a>
@@ -77,7 +77,7 @@
 <!-- Title -->
 <h1 id="top">Forward Deployed Engineer：<br>从 Palantir 到捷安高科的落地可行性研究</h1>
 
-<p class="subtitle">FDE 模式在 AI 时代的全面复兴——为什么这套方法论天然适合复杂定制化交付的企业，以及我们怎么从 0 到 1 把它做出来。</p>
+<p class="subtitle">FDE 模式在 AI 时代的全面复兴——为什么这套方法论天然适合复杂定制化交付的企业，以及如何从 0 到 1 构建落地路径。</p>
 
 <!-- Meta -->
 <div class="article-meta">
@@ -98,8 +98,8 @@
 <h2 id="executive-summary">执行摘要</h2>
 
 <div class="callout tip">
-  <div class="callout-title">💡 一句话结论</div>
-  <strong>捷安高科的业务结构比 Palantir 的多数客户场景更复杂、更定制化，因此更需要 FDE 模式——而 AI Coding 工具的成熟，让我们可以用远低于 Palantir 的成本启动这套模式。</strong>
+  <div class="callout-title">💡 核心发现</div>
+  <strong>FDE（Forward Deployed Engineer）模式正在从 Palantir 的独有实践演变为整个 AI 行业的标准交付范式。对于业务结构复杂、定制化程度高的 B 端企业，这套模式的价值尤为显著——而 AI Coding 工具的成熟，使得中等规模企业也能以远低于 Palantir 的成本启动 FDE 实践。</strong>
 </div>
 
 <div class="stat-grid">
@@ -116,16 +116,16 @@
     <div class="stat-label">OpenAI + Anthropic<br>FDE 公司投资总额</div>
   </div>
   <div class="stat-card">
-    <div class="stat-number">80%+</div>
-    <div class="stat-label">企业 AI 项目<br>失败率（行业报告）</div>
+    <div class="stat-number">75%</div>
+    <div class="stat-label">AIP Boot Camp<br>客户转化率</div>
   </div>
 </div>
 
-<p><strong>你应该读这篇调研的三个理由：</strong></p>
+<p><strong>本报告的核心内容：</strong></p>
 <ol>
-  <li><strong>趋势确认</strong>：Palantir 用 FDE 模式实现了上市以来最快增速，OpenAI 和 Anthropic 分别砸了 40 亿和 15 亿美元复制这套模式——这不是概念，是被验证的商业模型。</li>
-  <li><strong>适配分析</strong>：本文不是 Palantir 科普。核心篇幅用于分析捷安高科的业务结构为什么天然适合 FDE，以及具体到可执行的六个月路径。</li>
-  <li><strong>先发窗口</strong>：公司领导层已关注到 FDE 方向。在正式推进之前完成深度调研，意味着从"跟随者"变成"先行者"。</li>
+  <li><strong>模式解析</strong>：FDE 不只是一个岗位名称，而是一套被 Palantir 验证了 20 年的客户交付方法论。Palantir 用它实现了上市以来最快增速，OpenAI 和 Anthropic 分别投入 40 亿和 15 亿美元复制这套模式。</li>
+  <li><strong>适配分析</strong>：本文不止于 Palantir 科普。核心篇幅用于分析 FDE 模式与 B 端定制化交付企业（以捷安高科为例）的结构性契合，以及从产品经理视角出发的落地路径。</li>
+  <li><strong>行业全景</strong>：覆盖 Palantir 财务数据、硅谷 FDE 扩散趋势、中国厂商类 FDE 实践、AI 工程演进阶段，提供完整的决策参考框架。</li>
 </ol>
 
 <!-- ==================== 延伸阅读 ==================== -->
@@ -242,7 +242,7 @@
 
 <h3 id="ch1-3">1.3 捷安高科的具体痛点</h3>
 
-<p>回到我们自己。捷安高科的业务结构让信息衰减问题比一般软件公司更严重：</p>
+<p>以职教仿真行业的捷安高科（300845.SZ）为例，其业务结构使信息衰减问题比一般软件公司更为严重：</p>
 
 <ul>
   <li><strong>交付物是"教学解决方案"</strong>，不是一个软件系统——它包含设备、软件、课程、师资培训、考核体系，至少 5 个专业维度</li>
@@ -251,7 +251,7 @@
   <li><strong>必须现场调试</strong>——硬件 + 软件 + 教学法都要在现场落地，远程交付根本不可能</li>
 </ul>
 
-<p>这种交付复杂度，远超传统软件公司。它<strong>逼着我们必须深入客户现场</strong>，但目前的组织结构是按"销售→产品→开发→实施"的瀑布走的——<strong>结构和业务本质之间有巨大错配</strong>。</p>
+<p>这种交付复杂度远超传统软件公司，<strong>天然要求团队深入客户现场</strong>。但如果组织结构仍按"销售→产品→开发→实施"的瀑布模式运行，就会出现<strong>结构和业务本质之间的巨大错配</strong>。</p>
 
 <div class="callout critical">
   <div class="callout-title">⚠️ 核心判断</div>
@@ -333,6 +333,28 @@
 
 <p>FDE 的判别标准就一条：<strong>他写出来的东西在客户那里跑生产，并且公司平台因为他的工作变得更厚。</strong></p>
 
+<h4>FDE vs 传统咨询：为什么咨询公司也在转型</h4>
+
+<p>FDE 模式与传统管理咨询（McKinsey、Deloitte、Accenture）存在根本性差异。值得注意的是，咨询巨头们正在主动向 FDE 模式靠拢——<strong>Deloitte 于 2025 年 12 月正式成立了 FDE 实践部门</strong>，EY 于 2026 年 4 月跟进，行业分析师预计 PwC 和 KPMG 将在 12 个月内效仿。</p>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr><th>维度</th><th>传统咨询</th><th>FDE 模式</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>交付物</strong></td><td>报告、建议书、路线图</td><td>在客户环境运行的生产系统</td></tr>
+    <tr><td><strong>计费模式</strong></td><td>按小时/按天计费</td><td>按业务结果定价</td></tr>
+    <tr><td><strong>驻场周期</strong></td><td>项目制（数周至数月）</td><td>长期嵌入（直到系统独立运转）</td></tr>
+    <tr><td><strong>核心能力</strong></td><td>分析、演示、汇报</td><td>写代码、搭系统、跑生产</td></tr>
+    <tr><td><strong>知识沉淀</strong></td><td>留在 PPT 和报告里</td><td>沉淀进产品平台，可跨客户复用</td></tr>
+    <tr><td><strong>客户依赖</strong></td><td>依赖顾问持续指导</td><td>目标是让客户的系统自主运转</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>咨询巨头转型 FDE 的核心驱动力是：<strong>AI 时代，"建议"的价值急剧贬值，"能跑的系统"才是客户愿意付费的东西</strong>。正如一位行业分析师所说：FDE 是"建造者（builder），不是建议者（advisor）"。</p>
+
 <h3 id="ch2-3">2.3 Ontology：把垂类知识变成公司资产</h3>
 
 <p>Palantir 平台的核心不是算法或界面，是 <span class="term" data-tip="Ontology 是 Palantir Foundry 的核心概念，把企业的数据和业务逻辑统一建模为可操作的对象网络">Ontology</span>——一套把企业的"名词（数据）+ 动词（业务逻辑）"统一建模的系统。</p>
@@ -369,7 +391,7 @@
 
 <p>Ontology 的革命性在于：它让<strong>业务专家和技术人员可以用同一套语言对话</strong>。传统软件开发中，业务需求要"翻译"成技术文档，翻译过程中信息必然损耗；Ontology 把业务概念直接建模为可操作的对象，消除了翻译环节。</p>
 
-<p>这对捷安高科的启示很直接：如果我们能把"轨交仿真实训"这个领域的核心概念（工种、工序、设备、故障类型、考核标准……）建模为一套 Ontology，那每次新项目的定制化就不再是从零开始，而是在已有的概念网络上增量扩展。</p>
+<p>对于定制化交付企业，这一理念的应用价值非常直接。以捷安高科为例，如果将"轨交仿真实训"领域的核心概念（工种、工序、设备、故障类型、考核标准……）建模为一套 Ontology，那么每次新项目的定制化就不再是从零开始，而是在已有的概念网络上增量扩展。这一逻辑适用于任何存在大量领域知识沉淀需求的 B 端企业。</p>
 
 <h3 id="ch2-4">2.4 AIP：LLM 如何接入这套体系</h3>
 
@@ -489,6 +511,24 @@
       <td>2024 年中成立</td>
       <td>采用 "pod" 小组模式</td>
     </tr>
+    <tr>
+      <td><strong>Salesforce</strong></td>
+      <td>大规模 FDE 团队建设</td>
+      <td>目标 1,000 名 FDE</td>
+      <td>覆盖 CRM/AI Agent 部署场景</td>
+    </tr>
+    <tr>
+      <td><strong>Deloitte</strong></td>
+      <td>2025 年 12 月成立 FDE 实践</td>
+      <td>快速扩张中</td>
+      <td>围绕 Zora AI 平台；传统咨询向 FDE 转型的标志事件</td>
+    </tr>
+    <tr>
+      <td><strong>Intercom</strong></td>
+      <td>AI Agent 部署的 FDE 模式</td>
+      <td>核心团队</td>
+      <td>18 个月内将 AI Agent Fin 从 5 个客户扩展到 7,000 个，达 67% 问题解决率</td>
+    </tr>
   </tbody>
 </table>
 </div>
@@ -514,6 +554,36 @@
   <div class="callout-title">📌 值得注意的信号</div>
   Andreessen Horowitz 称 FDE 为"科技界最热门的工作"；Y Combinator 统计旗下超过 100 家被投公司在招 FDE；OpenAI 的 FDE 团队是 Agents SDK 的重要贡献者——FDE 不只是做客户服务，他们在定义下一代 AI 产品的形态。
 </div>
+
+<h4>FDE 薪酬与人才市场</h4>
+
+<p>FDE 的薪酬水平反映了市场对这一角色的高度重视：</p>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr><th>指标</th><th>数据</th><th>对比基准</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>基础薪资中位数</strong></td><td>$210K/年</td><td>比同级 SWE 高 25-40%</td></tr>
+    <tr><td><strong>总薪酬范围（TC）</strong></td><td>$210K - $630K+</td><td>含股权；Palantir Staff 级可达 $630K+</td></tr>
+    <tr><td><strong>小时费率（合同制）</strong></td><td>$90 - $300+/小时</td><td>高于多数技术咨询费率</td></tr>
+    <tr><td><strong>股权比例</strong></td><td>70% 的 FDE 岗位提及股权</td><td>远高于传统客户交付岗位</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>这一薪酬溢价的底层逻辑是：FDE 同时拥有工程能力和业务理解，这种复合型人才在市场上极度稀缺。</p>
+
+<h4>全球扩展：FDE 走出硅谷</h4>
+
+<p>FDE 模式正在快速突破硅谷的地理边界：</p>
+<ul>
+  <li><strong>OpenAI 收购 Tomoro</strong>（英国总部，2023 年成立），该公司在英国、亚洲和澳大利亚拥有 150 名 FDE</li>
+  <li><strong>欧洲</strong>：10Clouds（波兰）等公司开始在欧洲市场推广 FDE 概念</li>
+  <li><strong>亚洲</strong>：多家公司开始从亚洲招聘高级 FDE 人才，印度和东南亚成为重要人才来源</li>
+  <li><strong>中国</strong>：尚未出现以"FDE"命名的岗位，但类 FDE 实践已在头部 AI 公司中出现（见下节分析）</li>
+</ul>
 
 <h3 id="ch3-3">3.3 中国的类 FDE 实践</h3>
 
@@ -544,13 +614,13 @@
 </ul>
 
 <div class="callout tip">
-  <div class="callout-title">💡 对捷安的启示</div>
-  国内没有公司在"职教仿真"这个赛道上跑通 FDE 模式。这既是挑战（没有现成模板可抄），也是蓝海（做出来就是行业第一个）。
+  <div class="callout-title">💡 垂直行业的机会窗口</div>
+  目前国内尚无企业在"职教仿真"等垂直赛道上完整实践 FDE 模式。这意味着既没有现成模板可以参考，也意味着先行者有机会定义行业标准。
 </div>
 
 <h3 id="ch3-4">3.4 诚实面对：FDE 模式的批评与局限</h3>
 
-<p>FDE 不是万能药。行业对这套模式有严肃的批评，我们必须正视：</p>
+<p>FDE 不是万能药。行业对这套模式有严肃的批评，需要正视：</p>
 
 <div class="accordion" id="criticismAccordion">
   <div class="accordion-item">
@@ -561,7 +631,7 @@
     <div class="accordion-content">
       <p><strong>批评</strong>：雇佣、培训、部署顶尖工程师到每个客户现场，成本极高且不可能无限扩张。</p>
       <p><strong>Palantir 的回应</strong>：FDE 每一次部署都在让平台变厚。第 50 次部署应该比第 10 次快——如果不是，说明飞轮出了问题。Palantir 的营收加速（39% → 85%）证明飞轮在转。</p>
-      <p><strong>对捷安的影响</strong>：初期这确实是约束。但 AI Coding 工具大幅降低了"现场出活"的人才门槛——以前需要全栈高手，现在中级工程师 + Claude Code 就能达到类似产出。</p>
+      <p><strong>中等规模企业的应对</strong>：初期这确实是约束。但 AI Coding 工具大幅降低了"现场出活"的人才门槛——以前需要全栈高手，现在中级工程师 + AI Coding 工具就能达到类似产出。</p>
     </div>
   </div>
   <div class="accordion-item">
@@ -572,18 +642,18 @@
     <div class="accordion-content">
       <p><strong>批评</strong>：当 FDE 离职或轮岗，客户的工作流知识、边缘案例处理、业务理解都跟着走了。依赖从系统转移到了个人。</p>
       <p><strong>缓解方案</strong>：① 强制产出标准化文档（需求 patterns + 解决方案 patterns + 反共识 insights）；② 把个人知识沉淀进 Ontology / 知识图谱，让知识"长在系统上"而不是"长在人上"；③ 小团队制（Echo + Delta）本身就是冗余设计。</p>
-      <p><strong>对捷安的影响</strong>：我建议用 Obsidian + 飞书知识库双轨制来应对这个问题。每次客户走访强制产出"三件套"，知识留在系统里。</p>
+      <p><strong>实践建议</strong>：可采用"个人知识库 + 团队知识库"双轨制来应对这个问题。每次客户走访强制产出标准化文档（需求 patterns、解决方案 patterns、反共识 insights），知识留在系统里而非个人脑中。</p>
     </div>
   </div>
   <div class="accordion-item">
     <div class="accordion-header" onclick="toggleAccordion(this)">
-      <span>❸ "胶水人"陷阱：FDE 容易变成救火队长</span>
+      <span>❸ "胶水人"陷阱：40-60% 的时间可能被浪费</span>
       <span class="accordion-arrow">▼</span>
     </div>
     <div class="accordion-content">
-      <p><strong>批评</strong>：FDE 本应解决高价值业务问题，但实际工作中经常被拉去做低层级的数据集成、环境调试、bug 修复——变成"粘合剂"而不是"建设者"。</p>
+      <p><strong>批评</strong>：据 Rocketlane 的调研，FDE <strong>40-60% 的工作时间被消耗在非核心事务上</strong>——追踪上下文、更新利益相关者、管理分散的工具，而非解决高价值业务问题。FDE 本应是"建设者"，实际却经常变成"粘合剂"。</p>
       <p><strong>缓解方案</strong>：① 明确 FDE 的工作边界和优先级框架；② 低层级技术工作应由标准化流程和自动化工具承担；③ FDE 的 KPI 要对标"业务结果"而非"问题解决数量"。</p>
-      <p><strong>对捷安的影响</strong>：这是最需要警惕的风险。在国内 B 端环境下，客户的"低层级需求"压力非常大，FDE 角色很容易被稀释。需要在组织层面给 FDE 护城河——比如明确"FDE 不做实施运维"。</p>
+      <p><strong>国内 B 端场景的特殊挑战</strong>：这是最需要警惕的风险。在国内 B 端环境下，客户的"低层级需求"压力非常大，FDE 角色很容易被稀释。需要在组织层面设定清晰边界——比如明确"FDE 不做实施运维"。</p>
     </div>
   </div>
   <div class="accordion-item">
@@ -594,7 +664,7 @@
     <div class="accordion-content">
       <p><strong>批评</strong>：顶尖工程师全球飞来飞去写定制代码，高失败率、高差旅成本、没有先验的变现策略——传统 SaaS 财务模型里这完全不可接受。</p>
       <p><strong>回应</strong>：Palantir 用 60% 的调整后运营利润率回答了这个问题。FDE 不是成本中心，是获客手段——Boot Camp 的 5 天投入换来的是长期订阅合同。关键是飞轮转起来后，单位获客成本持续下降。</p>
-      <p><strong>对捷安的影响</strong>：我们不需要按 Palantir 的成本结构来。初期试点只需要 1-2 个人（我自己 + 可能的搭档），借助 AI Coding 工具把"人的成本"大幅降低。这是 2026 年做 FDE 比 2016 年做 FDE 的最大优势。</p>
+      <p><strong>2026 年的成本优势</strong>：中等规模企业不需要按 Palantir 的成本结构来。初期试点只需要 1-2 人组成的迷你团队，借助 AI Coding 工具大幅降低"人的成本"。这是 2026 年做 FDE 比 2016 年做 FDE 的最大结构性优势。</p>
     </div>
   </div>
   <div class="accordion-item">
@@ -610,12 +680,17 @@
   </div>
 </div>
 
+<div class="callout critical">
+  <div class="callout-title">⚠️ AI 项目失败率的数据背景</div>
+  据 MIT 研究，<strong>95% 的企业 AI 试点项目未能产生可衡量的回报</strong>；RAND 的统计显示 AI 项目失败率超过 80%，是传统 IT 项目失败率的两倍。失败的根本原因不是模型能力不足，而是<strong>缺少能在业务现场将 AI 能力与具体场景对接的人</strong>——这正是 FDE 模式要解决的核心问题。
+</div>
+
 <!-- ==================== 第4章 ==================== -->
-<h2 id="ch4">4. 适配：捷安高科为什么天然适合</h2>
+<h2 id="ch4">4. 适配分析：什么样的企业天然适合 FDE</h2>
 
-<h3 id="ch4-1">4.1 业务维度契合度分析</h3>
+<h3 id="ch4-1">4.1 FDE 适配度评估框架</h3>
 
-<p>用 Palantir 典型客户（情报机构/工业/医疗）作为基准，对比捷安高科的客户特征：</p>
+<p>并非所有企业都适合 FDE 模式。以 Palantir 典型客户（情报机构/工业/医疗）作为基准，可以建立一套评估框架。以下以职教仿真企业捷安高科为例进行分析：</p>
 
 <div class="table-wrapper">
 <table>
@@ -638,17 +713,17 @@
 
 <div class="callout critical">
   <div class="callout-title">⚠️ 关键判断</div>
-  捷安高科的业务结构可能比 Palantir 的多数客户场景<strong>更适合</strong> FDE 模式——因为我们交付的不是一个 IT 系统，而是一个"教学解决方案"。这种交付物的复杂度远超传统软件。
+  类似捷安高科这样的企业，其业务结构可能比 Palantir 的多数客户场景<strong>更适合</strong> FDE 模式——因为交付物不是一个 IT 系统，而是包含硬件、软件、课程、培训在内的"完整教学解决方案"。这种交付复杂度远超传统软件项目。<strong>任何交付物涉及多专业维度、强现场依赖的 B 端企业，都应认真评估 FDE 模式的适用性。</strong>
 </div>
 
-<h3 id="ch4-2">4.2 公司战略方向 × FDE 理念的映射</h3>
+<h3 id="ch4-2">4.2 企业 AI 战略 × FDE 理念的映射</h3>
 
-<p>总经理在 AI 应用推广启动大会上强调的五条要求，与 FDE 理念高度一致：</p>
+<p>当企业推进 AI 转型时，高层通常会提出一系列要求。以下分析这些典型要求与 FDE 理念的对应关系：</p>
 
 <div class="table-wrapper">
 <table>
   <thead>
-    <tr><th>总经理要求</th><th>FDE 理念对应</th><th>落地方式</th></tr>
+    <tr><th>企业 AI 转型的典型要求</th><th>FDE 理念对应</th><th>落地方式</th></tr>
   </thead>
   <tbody>
     <tr>
@@ -663,64 +738,64 @@
     </tr>
     <tr>
       <td>研发流程 AI 化要全面推进</td>
-      <td>FDE + AI Coding 是研发流程 AI 化最锋利的组合</td>
+      <td>FDE + AI Coding 是研发流程 AI 化最有效的组合</td>
       <td>AI Coding 让 FDE 以 1 人产出传统 3 人的量</td>
     </tr>
     <tr>
-      <td>运营流程 AI 化需深度数据分析</td>
+      <td>运营流程需要深度数据驱动</td>
       <td>FDE 反向沉淀的数据/流程能力就是洞察的来源</td>
-      <td>每次客户走访的"三件套"积累成客户洞察图谱</td>
+      <td>每次客户走访的标准化文档积累成客户洞察图谱</td>
     </tr>
     <tr>
       <td>垂类知识成为核心竞争力</td>
       <td>Ontology 本质就是把垂类知识沉淀为公司资产</td>
-      <td>构建"轨交仿真实训"领域的 Ontology 雏形</td>
+      <td>构建领域知识的结构化模型</td>
     </tr>
   </tbody>
 </table>
 </div>
 
-<p><strong>结论：FDE 不是另起炉灶，是给公司战略配上一套可执行的方法论。</strong></p>
+<p><strong>结论：FDE 不是另起炉灶的新战略，而是给企业现有 AI 转型战略配上一套可执行的方法论。</strong></p>
 
-<h3 id="ch4-3">4.3 AI 职教平台项目 = 天然的 FDE 试验田</h3>
+<h3 id="ch4-3">4.3 垂类 AI 平台项目 = 天然的 FDE 试验田</h3>
 
-<p>公司 2025 年已立项的"基于职教垂类大模型的 AI 职教平台建设项目"（投入约 7900 万节余募集资金），是 FDE 模式的天然试验田：</p>
+<p>对于正在建设垂类 AI 平台的企业，这类项目是 FDE 模式的天然试验田。以捷安高科的"基于职教垂类大模型的 AI 职教平台建设项目"为例：</p>
 
 <ul>
-  <li><strong>需要深入客户场景</strong>：职教大模型必须理解真实的教学流程、考核标准、学生行为，这些信息不可能在办公室里想出来</li>
-  <li><strong>需要快速迭代</strong>：LLM 在教学场景的效果必须现场验证（学生能不能真的学会），迭代周期越短越好</li>
-  <li><strong>需要沉淀垂类知识</strong>：项目的核心资产不是代码，是"轨交职教"的领域知识模型——这就是 Ontology</li>
-  <li><strong>有充足预算</strong>：7900 万的项目规模足以支撑 FDE 模式的试点成本</li>
+  <li><strong>需要深入客户场景</strong>：垂类大模型必须理解真实的业务流程、行业标准、用户行为，这些信息不可能在办公室里想出来</li>
+  <li><strong>需要快速迭代</strong>：LLM 在垂直场景的效果必须现场验证，迭代周期越短越好</li>
+  <li><strong>需要沉淀垂类知识</strong>：项目的核心资产不是代码，是领域知识模型——这就是 Ontology 理念的应用</li>
+  <li><strong>投入规模匹配</strong>：垂类 AI 平台通常有千万至亿级预算，足以支撑 FDE 模式的试点成本</li>
 </ul>
 
 <!-- ==================== 第5章 ==================== -->
 <h2 id="ch5">5. 路径：从 0 到 1 怎么落地</h2>
 
-<h3 id="ch5-1">5.1 不需要新岗位，先把行为做出来</h3>
+<h3 id="ch5-1">5.1 "行为先行"策略：不需要新岗位，先把模式跑起来</h3>
 
-<p>公司未必会专门设一个 FDE 岗位，所以策略不是申请岗位，而是<strong>先把行为做出来，让结果说话</strong>。</p>
+<p>在大多数组织中，直接设立"FDE"岗位面临阻力。更务实的策略是<strong>先把 FDE 行为做出来，让结果说话</strong>，再推动组织层面的正式化。</p>
 
-<p>具体动作：</p>
+<p>具体动作框架：</p>
 <ol>
-  <li><strong>跟 2-3 个销售建立通道</strong>，明确"凡是涉及 AI/智能化的客户提问，第一时间叫我"</li>
-  <li><strong>主动报名售前阶段的客户走访</strong>，哪怕项目还在售前也争取去现场看一次</li>
-  <li><strong>客户走访时带上 demo 工具链</strong>（笔记本 + Claude Code + Codex + 飞书智能体），现场跟客户互动出原型</li>
-  <li><strong>每次走访产出"三件套"</strong>：需求 patterns、解决方案 patterns、反共识 insights——全部进知识库</li>
+  <li><strong>建立前线信息通道</strong>——跟 2-3 个销售/客户经理建立合作，确保涉及 AI/智能化的客户需求第一时间触达</li>
+  <li><strong>主动介入售前阶段</strong>——哪怕项目还在售前，也争取去现场看一次，建立一手信息通道</li>
+  <li><strong>携带 demo 工具链走访客户</strong>——利用 AI Coding 工具（如 Claude Code、Codex、Cursor 等），现场跟客户互动出原型</li>
+  <li><strong>每次走访标准化产出</strong>：需求 patterns、解决方案 patterns、反共识 insights——全部进知识库</li>
 </ol>
 
 <div class="accordion">
   <div class="accordion-item">
     <div class="accordion-header" onclick="toggleAccordion(this)">
-      <span>📋 与上级沟通的话术模板（点击展开）</span>
+      <span>📋 组织内推动 FDE 试点的沟通模板（点击展开）</span>
       <span class="accordion-arrow">▼</span>
     </div>
     <div class="accordion-content">
       <blockquote>
-        "我观察到我们交付链路上的信息损耗主要发生在销售-产品-开发的多次转述中。我希望尝试一种新的工作方式：我直接参与重点项目的售前调研，用 AI 工具在现场快速做 demo 跟客户讨论，然后把整理过的、不失真的需求和现场抽象出的共性 patterns 同时输出给产品和研发。这种做法在硅谷叫 Forward Deployed Engineer，是 Palantir 跑通的模式，现在 OpenAI 和 Anthropic 也在用。我先以非正式方式试一两个项目，三个月后我们一起看效果。"
+        "我们交付链路上的信息损耗主要发生在销售→产品→开发的多次转述中。建议尝试一种新的工作方式：让产品/技术人员直接参与重点项目的售前调研，用 AI 工具在现场快速做 demo 跟客户讨论，然后把整理过的、不失真的需求和现场抽象出的共性 patterns 同时输出给产品和研发。这种做法叫 Forward Deployed Engineer，是 Palantir 跑通的模式，现在 OpenAI、Anthropic、Deloitte 都在复制。建议先以非正式方式试一两个项目，三个月后评估效果。"
       </blockquote>
       <p><strong>话术设计的逻辑</strong>：</p>
       <ul>
-        <li>不是"申请新岗位/加薪"——降低领导抵触</li>
+        <li>不是"申请新岗位/加薪"——降低管理层抵触</li>
         <li>把方法论来源讲清楚——显得不是拍脑袋</li>
         <li>给了明确试错周期——可证伪</li>
         <li>强调"做本职工作 + 增量"——不拆现有结构</li>
@@ -729,9 +804,9 @@
   </div>
 </div>
 
-<h3 id="ch5-2">5.2 谁最适合转型 FDE？——捷安岗位适配分析</h3>
+<h3 id="ch5-2">5.2 谁最适合转型 FDE？——B 端企业岗位适配分析</h3>
 
-<p>FDE 需要四项核心能力。在捷安高科的现有岗位中，哪些人最适合往这个方向发展？</p>
+<p>FDE 需要四项核心能力。在典型 B 端企业的现有岗位中，哪些人最适合往这个方向发展？</p>
 
 <div class="table-wrapper">
 <table>
@@ -819,7 +894,7 @@
         <li><strong>更多现场时间</strong>：从办公室走出去，跟着销售去客户现场，建立一手信息通道</li>
       </ul>
       <p><strong>转型阻力</strong>：最小。产品经理的思维模式天然最接近 FDE——识别问题、定义方案、协调资源。如果公司能接受"PM 去客户现场做 demo"这个工作方式，转型几乎是无缝的。</p>
-      <p><strong>这也是我自己正在走的路</strong>：作为产品经理，我已经在用 AI Coding 工具做快速原型，下一步就是更系统地嵌入客户现场。</p>
+      <p><strong>实践案例</strong>：已有产品经理通过学习 AI Coding 工具做快速原型，逐步向 FDE 工作模式转型，实现了"一人双角"的产品经理 + 工程原型能力组合。</p>
     </div>
   </div>
   <div class="accordion-item">
@@ -844,7 +919,7 @@
 
 <div class="callout tip">
   <div class="callout-title">💡 最理想的 FDE 小组配置</div>
-  <strong>1 名产品经理（Echo 主导）+ 1 名全栈工程师（Delta 主导）</strong>，组成两人搭档。产品经理负责"听懂客户、抽象需求、排优先级"，工程师负责"当场把需求变成可用的东西"。这正是 Palantir Echo + Delta 的迷你版。对捷安来说，初期甚至可以 1 个人同时扮演两个角色（如果这个人既懂业务又会 AI Coding）——我目前就在尝试这种"一人双角"模式。
+  <strong>1 名产品经理（Echo 主导）+ 1 名全栈工程师（Delta 主导）</strong>，组成两人搭档。产品经理负责"听懂客户、抽象需求、排优先级"，工程师负责"当场把需求变成可用的东西"。这正是 Palantir Echo + Delta 的迷你版。对中等规模企业来说，初期甚至可以 1 个人同时扮演两个角色——前提是这个人既懂业务又会 AI Coding，借助 AI 工具弥补传统全栈能力的短板。
 </div>
 
 <h3 id="ch5-3">5.3 AI 工程的演进：从 Prompt 到 Harness</h3>
@@ -999,8 +1074,8 @@
     <ul>
       <li><strong>时间成本</strong>：前 3 个月每周额外投入 8-10 小时（在本职工作之上）</li>
       <li><strong>差旅成本</strong>：每月 1-2 次客户走访（跟销售同行，边际成本低）</li>
-      <li><strong>工具成本</strong>：Claude Pro + Codex 订阅，约 ¥300/月</li>
-      <li><strong>学习成本</strong>：持续提升 AI Coding 熟练度（已在进行中）</li>
+      <li><strong>工具成本</strong>：AI Coding 工具订阅，约 ¥200-500/月</li>
+      <li><strong>学习成本</strong>：持续提升 AI Coding 熟练度</li>
     </ul>
   </div>
   <div class="compare-card">
@@ -1032,7 +1107,7 @@
     </div>
     <div class="accordion-content">
       <p><strong>策略</strong>：从最不强势的销售开始，从最棘手的客户开始。销售面对自己搞不定的客户时，会愿意带任何能帮忙的人。</p>
-      <p><strong>底层逻辑</strong>：我让销售更好签单——这是利益对齐，不是权力博弈。</p>
+      <p><strong>底层逻辑</strong>：FDE 介入让销售更好签单——这是利益对齐，不是权力博弈。</p>
     </div>
   </div>
   <div class="accordion-item">
@@ -1041,7 +1116,7 @@
       <span class="accordion-arrow">▼</span>
     </div>
     <div class="accordion-content">
-      <p><strong>策略</strong>：Demo 标记清楚是"探索原型"，不是承诺交付。关键是把"我们能想到的可能性"展示给客户，让他们参与排序优先级。</p>
+      <p><strong>策略</strong>：Demo 标记清楚是"探索原型"，不是承诺交付。关键是把"技术上可能的方向"展示给客户，让他们参与排序优先级。</p>
       <p><strong>Palantir 的做法</strong>：FDE 经常 demo 一堆功能最后只交付一部分——客户参与排序比客户被动接收要好得多。</p>
     </div>
   </div>
@@ -1065,11 +1140,11 @@
   </div>
   <div class="accordion-item">
     <div class="accordion-header" onclick="toggleAccordion(this)">
-      <span>Q5："公司在推飞书智能体，你推一个不一致的东西？"</span>
+      <span>Q5："公司已有 AI 工具推广计划，FDE 会冲突吗？"</span>
       <span class="accordion-arrow">▼</span>
     </div>
     <div class="accordion-content">
-      <p><strong>策略</strong>：飞书智能体是"工具替换"层面的 AI 化，FDE 是"协作流程"层面的变革——两者不冲突。飞书智能体可以是 FDE demo 工具链的一部分（处理纪要、沉淀知识），FDE 是上层方法论。在汇报时务必把两者的互补关系讲清楚。</p>
+      <p><strong>策略</strong>：企业现有的 AI 工具推广（如飞书智能体、企业微信 AI 等）属于"工具替换"层面的 AI 化，FDE 是"协作流程"层面的变革——两者不冲突。这些 AI 工具可以是 FDE 工具链的一部分（处理纪要、沉淀知识），FDE 是上层方法论。在推动时务必把两者的互补关系讲清楚。</p>
     </div>
   </div>
 </div>
@@ -1110,10 +1185,16 @@
   <li><a href="https://fdepulse.com/insights/fde-hiring-trends-2026/" target="_blank">FDE Pulse — 2026 年 FDE 招聘趋势</a></li>
   <li><a href="https://www.80aj.com/2026/05/23/fde-forward-deployed-engineer/" target="_blank">FDE 是谁：AI 落地的最后一公里由人来扛</a></li>
   <li><a href="https://anandbg.com/blog/palantir-aip-end-to-end-agentic-architecture" target="_blank">Palantir 12 层 Agentic 架构解析</a></li>
+  <li><a href="https://www.deloitte.com/us/en/services/consulting/articles/announcing-forward-deployed-engineering.html" target="_blank">Deloitte — Announcing Forward Deployed Engineering Practice</a></li>
+  <li><a href="https://www.fastcompany.com/91435680/postings-for-this-ai-job-are-up-800" target="_blank">Fast Company — FDE Job Postings Up 800%</a></li>
+  <li><a href="https://www.gainsight.com/blog/how-forward-deployed-engineers-transformed-customer-outcomes-for-intercom/" target="_blank">Gainsight — How FDEs Transformed Outcomes for Intercom</a></li>
+  <li><a href="https://www.rocketlane.com/blogs/forward-deployed-engineer" target="_blank">Rocketlane — FDE Efficiency & Anti-Patterns</a></li>
+  <li><a href="https://securityboulevard.com/2026/02/why-70-of-ai-projects-fail-how-forward-deployed-engineers-change-the-equation/" target="_blank">Security Boulevard — Why AI Projects Fail & How FDEs Change the Equation</a></li>
+  <li><a href="https://posthog.com/blog/forward-deployed-engineer" target="_blank">PostHog — What is a Forward Deployed Engineer</a></li>
 </ul>
 
 <h3>C. 数据来源说明</h3>
-<p>本文 Palantir 财务数据来源于 SEC 公开文件（Form 8-K）和官方 earnings release。FDE 岗位数据来源于 FDE Pulse、Glassdoor、ZipRecruiter 等公开平台。捷安高科业务数据基于 2024 年报和 2025 年公告。所有数据截至 2026 年 5 月。</p>
+<p>本文 Palantir 财务数据来源于 SEC 公开文件（Form 8-K）和官方 earnings release。FDE 岗位数据来源于 FDE Pulse、Glassdoor、ZipRecruiter、6figr 等公开平台。薪酬数据来源于 Bloomberry 对 1,000+ FDE 岗位的分析。AI 项目失败率数据来源于 MIT 和 RAND 研究报告。Deloitte FDE 实践信息来源于 Deloitte 官方公告。所有数据截至 2026 年 5 月。</p>
 
 <hr style="margin:48px 0 24px;border:none;border-top:1px solid var(--border-color);">
 
@@ -1139,7 +1220,7 @@
   <a href="#ch3-2" class="toc-link sub">硅谷 FDE 扩散</a>
   <a href="#ch3-3" class="toc-link sub">中国实践</a>
   <a href="#ch3-4" class="toc-link sub">批评与局限</a>
-  <a href="#ch4" class="toc-link">4. 捷安适配分析</a>
+  <a href="#ch4" class="toc-link">4. 企业适配分析</a>
   <a href="#ch5" class="toc-link">5. 落地路径</a>
   <a href="#ch5-2" class="toc-link sub">岗位转型分析</a>
   <a href="#ch5-3" class="toc-link sub">AI 工程演进</a>
