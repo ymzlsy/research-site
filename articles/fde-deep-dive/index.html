@@ -294,18 +294,86 @@
 
 <p>很多人会把 FDE 跟已有岗位混淆。以下对比帮助厘清边界：</p>
 
+<style>
+  .match-full { background: #dcfce7; color: #166534; }
+  .match-high { background: #d1fae5; color: #065f46; }
+  .match-mid  { background: #fef9c3; color: #854d0e; }
+  .match-low  { background: #fee2e2; color: #991b1b; }
+  .match-none { background: #fecaca; color: #7f1d1d; }
+  .match-ref  { background: var(--accent-bg); font-weight: 600; }
+  [data-theme="dark"] .match-full { background: #064e3b; color: #6ee7b7; }
+  [data-theme="dark"] .match-high { background: #064e3b; color: #a7f3d0; }
+  [data-theme="dark"] .match-mid  { background: #713f12; color: #fde68a; }
+  [data-theme="dark"] .match-low  { background: #7f1d1d; color: #fca5a5; }
+  [data-theme="dark"] .match-none { background: #611616; color: #fca5a5; }
+  [data-theme="dark"] .match-ref  { background: rgba(99,102,241,0.15); font-weight: 600; }
+  .fde-legend { display:flex; gap:16px; flex-wrap:wrap; margin:12px 0 4px; font-size:0.82rem; }
+  .fde-legend span { display:inline-flex; align-items:center; gap:5px; }
+  .fde-legend i { display:inline-block; width:14px; height:14px; border-radius:3px; }
+</style>
+
+<div class="fde-legend">
+  <span><i style="background:#dcfce7;border:1px solid #bbf7d0;"></i> 完全匹配</span>
+  <span><i style="background:#d1fae5;border:1px solid #a7f3d0;"></i> 高度匹配</span>
+  <span><i style="background:#fef9c3;border:1px solid #fde68a;"></i> 部分匹配</span>
+  <span><i style="background:#fee2e2;border:1px solid #fecaca;"></i> 弱匹配</span>
+  <span><i style="background:#fecaca;border:1px solid #f87171;"></i> 不匹配</span>
+</div>
+
 <div class="table-wrapper">
 <table>
   <thead>
-    <tr><th></th><th>FDE</th><th>软件工程师</th><th>咨询顾问</th><th>售前/解决方案架构师</th><th>驻场实施工程师</th></tr>
+    <tr><th></th><th style="min-width:120px;">FDE</th><th>软件工程师</th><th>咨询顾问</th><th>售前/解决方案架构师</th><th>驻场实施工程师</th></tr>
   </thead>
   <tbody>
-    <tr><td><strong>在哪里工作</strong></td><td>客户现场（长期）</td><td>公司办公室</td><td>客户现场（项目制）</td><td>短期出差</td><td>客户现场（项目制）</td></tr>
-    <tr><td><strong>写不写代码</strong></td><td>写生产代码</td><td>写生产代码</td><td>不写代码</td><td>写 Demo 为主</td><td>写配置/集成代码</td></tr>
-    <tr><td><strong>交付物是什么</strong></td><td>跑在客户系统上的能力</td><td>产品功能</td><td>报告和建议</td><td>方案演示</td><td>按文档部署完成</td></tr>
-    <tr><td><strong>对什么负责</strong></td><td>客户的业务结果</td><td>代码质量/功能完成</td><td>报告质量</td><td>签单支持</td><td>验收通过</td></tr>
-    <tr><td><strong>知识去哪了</strong></td><td>沉淀回产品平台</td><td>留在代码库里</td><td>留在 PPT 里</td><td>留在方案文档里</td><td>留在项目组里</td></tr>
-    <tr><td><strong>跟客户的关系</strong></td><td>长期合作伙伴</td><td>间接（通过 PM）</td><td>短期顾问</td><td>签单前活跃</td><td>项目期间</td></tr>
+    <tr>
+      <td><strong>在哪里工作</strong></td>
+      <td class="match-ref">客户现场（长期）</td>
+      <td class="match-none">公司办公室</td>
+      <td class="match-mid">客户现场（项目制）</td>
+      <td class="match-low">短期出差</td>
+      <td class="match-mid">客户现场（项目制）</td>
+    </tr>
+    <tr>
+      <td><strong>写不写代码</strong></td>
+      <td class="match-ref">写生产代码</td>
+      <td class="match-full">写生产代码</td>
+      <td class="match-none">不写代码</td>
+      <td class="match-low">写 Demo 为主</td>
+      <td class="match-mid">写配置/集成代码</td>
+    </tr>
+    <tr>
+      <td><strong>交付物是什么</strong></td>
+      <td class="match-ref">跑在客户系统上的能力</td>
+      <td class="match-mid">产品功能</td>
+      <td class="match-none">报告和建议</td>
+      <td class="match-low">方案演示</td>
+      <td class="match-mid">按文档部署完成</td>
+    </tr>
+    <tr>
+      <td><strong>对什么负责</strong></td>
+      <td class="match-ref">客户的业务结果</td>
+      <td class="match-low">代码质量/功能完成</td>
+      <td class="match-low">报告质量</td>
+      <td class="match-low">签单支持</td>
+      <td class="match-mid">验收通过</td>
+    </tr>
+    <tr>
+      <td><strong>知识去哪了</strong></td>
+      <td class="match-ref">沉淀回产品平台</td>
+      <td class="match-high">留在代码库里</td>
+      <td class="match-none">留在 PPT 里</td>
+      <td class="match-low">留在方案文档里</td>
+      <td class="match-none">留在项目组里</td>
+    </tr>
+    <tr>
+      <td><strong>跟客户的关系</strong></td>
+      <td class="match-ref">长期合作伙伴</td>
+      <td class="match-none">间接（通过 PM）</td>
+      <td class="match-mid">短期顾问</td>
+      <td class="match-low">签单前活跃</td>
+      <td class="match-mid">项目期间</td>
+    </tr>
   </tbody>
 </table>
 </div>
