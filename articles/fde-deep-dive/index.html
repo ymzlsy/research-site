@@ -40,6 +40,12 @@
   <div class="sidebar-section">
     <div class="sidebar-section-title">目录</div>
     <a href="#executive-summary" class="sidebar-link active">执行摘要</a>
+    <a href="#ch0" class="sidebar-link">FDE 五分钟入门</a>
+    <a href="#ch0-1" class="sidebar-link sub">什么是 FDE</a>
+    <a href="#ch0-2" class="sidebar-link sub">日常做什么</a>
+    <a href="#ch0-3" class="sidebar-link sub">需要什么能力</a>
+    <a href="#ch0-4" class="sidebar-link sub">跟其他岗位的区别</a>
+    <a href="#ch0-5" class="sidebar-link sub">为什么突然火了</a>
     <a href="#ch1" class="sidebar-link">1. 问题：传统交付的结构性困境</a>
     <a href="#ch1-1" class="sidebar-link sub">1.1 信息衰减定律</a>
     <a href="#ch1-2" class="sidebar-link sub">1.2 AI 放大了问题</a>
@@ -91,7 +97,7 @@
   <span class="meta-dot">·</span>
   <span class="meta-date">2026 年 5 月 24 日</span>
   <span class="meta-dot">·</span>
-  <span class="meta-read-time">约 25 分钟阅读</span>
+  <span class="meta-read-time">约 30 分钟阅读</span>
 </div>
 
 <!-- ==================== 执行摘要 ==================== -->
@@ -175,6 +181,164 @@
   </div>
 </div>
 
+<!-- ==================== FDE 概念导读 ==================== -->
+<h2 id="ch0">FDE 是什么：一个五分钟入门</h2>
+
+<p>在深入分析之前，先回答四个最基本的问题。无论你是产品经理、工程师、销售还是管理者，这个章节都能帮你在五分钟内建立对 FDE 的完整认知。</p>
+
+<h3 id="ch0-1">什么是 FDE？</h3>
+
+<p><strong>FDE（Forward Deployed Engineer，前线部署工程师）</strong>是一种由 Palantir 在 2005 年左右首创的工程角色。用一句话概括：</p>
+
+<div class="callout tip">
+  <div class="callout-title">💡 一句话定义</div>
+  <strong>FDE 是被派驻到客户现场、能写生产级代码、对业务结果（而非功能交付）负责、并将一线经验反向沉淀进公司产品平台的工程师。</strong>
+</div>
+
+<p>拆开来看，这个定义有四个关键词，缺任何一个都不是真正的 FDE：</p>
+
+<div class="stat-grid">
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.5rem;">🏢</div>
+    <div class="stat-label" style="font-size:0.95rem;line-height:1.6;"><strong>物理嵌入</strong><br>不是远程支持，不是出差几天，而是<strong>长期驻扎在客户的办公室里</strong>，跟客户团队坐在一起工作。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.5rem;">💻</div>
+    <div class="stat-label" style="font-size:0.95rem;line-height:1.6;"><strong>写生产代码</strong><br>不是画架构图、不是写 PPT、不是做演示，而是<strong>写真正在客户系统里跑的代码</strong>。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.5rem;">📊</div>
+    <div class="stat-label" style="font-size:0.95rem;line-height:1.6;"><strong>对业务结果负责</strong><br>KPI 不是"功能上线了没"，而是<strong>"客户的业务问题解决了没"</strong>——这是跟传统开发最本质的区别。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.5rem;">🔄</div>
+    <div class="stat-label" style="font-size:0.95rem;line-height:1.6;"><strong>反向沉淀</strong><br>在客户现场做的定制方案，要把共性部分<strong>抽象回公司的产品平台</strong>，让下一个客户受益。</div>
+  </div>
+</div>
+
+<h3 id="ch0-2">FDE 日常做什么？</h3>
+
+<p>一个 FDE 的典型工作日跟传统工程师完全不同。以下是 Palantir FDE 的真实工作场景：</p>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-label">上午</div>
+    <div class="timeline-title">跟客户的业务团队开会</div>
+    <div class="timeline-desc">不是听需求汇报，而是坐在客户的运营室里，看他们实际怎么工作、卡在哪里、哪些流程是低效的。FDE 需要有足够的业务理解力，能跟客户的业务专家平等对话。</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-label">下午</div>
+    <div class="timeline-title">把上午发现的问题写成可运行的代码</div>
+    <div class="timeline-desc">用公司的平台工具（如 Palantir Foundry）快速搭建原型。关键词是"快"——不是两周后交付，而是当天下午就能给客户看到一个能跑的东西。2026 年，AI Coding 工具让这个速度又提升了一个量级。</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-label">傍晚</div>
+    <div class="timeline-title">演示 + 迭代 + 沉淀</div>
+    <div class="timeline-desc">把原型给客户看，根据反馈当场修改。一天可能迭代 2-3 轮。同时把今天的发现写入标准化文档：哪些需求是这个客户独有的？哪些可能是所有客户都会遇到的共性问题？后者就是反向沉淀的素材。</div>
+  </div>
+</div>
+
+<h3 id="ch0-3">FDE 需要什么能力？</h3>
+
+<p>FDE 之所以稀缺，是因为它要求的能力组合在传统岗位中几乎不存在——它横跨了工程师、产品经理和咨询顾问三种角色的核心能力：</p>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr><th>能力维度</th><th>具体要求</th><th>为什么重要</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>全栈工程能力</strong></td>
+      <td>前端、后端、数据管道都能上手；不追求每个领域都精通，但要能独立交付端到端的可用系统</td>
+      <td>客户现场没有"前端同事"帮你，你就是整个团队</td>
+    </tr>
+    <tr>
+      <td><strong>业务理解力</strong></td>
+      <td>能快速理解客户所在行业的核心流程、关键指标和决策逻辑</td>
+      <td>听不懂客户说什么，就不可能写出解决他问题的代码</td>
+    </tr>
+    <tr>
+      <td><strong>沟通与共情</strong></td>
+      <td>能跟 CEO 讲战略价值，也能跟一线操作员聊具体痛点；能在模糊需求中抓住真正的问题</td>
+      <td>FDE 80% 的价值来自"问对了问题"，而不是"写对了代码"</td>
+    </tr>
+    <tr>
+      <td><strong>快速原型能力</strong></td>
+      <td>30 分钟内把一个想法变成可演示的原型；能容忍"先跑起来再完善"的开发节奏</td>
+      <td>客户的注意力窗口很短，当天看不到东西，信任就会衰减</td>
+    </tr>
+    <tr>
+      <td><strong>抗压与适应力</strong></td>
+      <td>适应频繁出差、应对客户现场的混乱和政治、处理不断变更的需求</td>
+      <td>客户现场不是办公室，没有稳定的开发环境和明确的需求文档</td>
+    </tr>
+    <tr>
+      <td><strong>抽象与沉淀</strong></td>
+      <td>能从个案中提取共性模式，把一次性的定制方案变成可复用的产品能力</td>
+      <td>这是 FDE 跟"高级外包"的根本区别——没有反向沉淀，FDE 模式不可持续</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout info">
+  <div class="callout-title">📌 招聘视角的数据</div>
+  据 Bloomberry 对 1,000+ 个 FDE 岗位的分析，FDE 的<strong>基础薪资中位数为 $210K/年</strong>，比同级别传统软件工程师高 25-40%。Palantir Staff 级别的 FDE 总薪酬（含股权）可达 $630K+。这个溢价本质上是在为"复合型能力"定价——市场上能同时满足以上六项能力的人极其稀少。
+</div>
+
+<h3 id="ch0-4">FDE 跟其他岗位有什么区别？</h3>
+
+<p>很多人会把 FDE 跟已有岗位混淆。以下对比帮助厘清边界：</p>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr><th></th><th>FDE</th><th>软件工程师</th><th>咨询顾问</th><th>售前/解决方案架构师</th><th>驻场实施工程师</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>在哪里工作</strong></td><td>客户现场（长期）</td><td>公司办公室</td><td>客户现场（项目制）</td><td>短期出差</td><td>客户现场（项目制）</td></tr>
+    <tr><td><strong>写不写代码</strong></td><td>写生产代码</td><td>写生产代码</td><td>不写代码</td><td>写 Demo 为主</td><td>写配置/集成代码</td></tr>
+    <tr><td><strong>交付物是什么</strong></td><td>跑在客户系统上的能力</td><td>产品功能</td><td>报告和建议</td><td>方案演示</td><td>按文档部署完成</td></tr>
+    <tr><td><strong>对什么负责</strong></td><td>客户的业务结果</td><td>代码质量/功能完成</td><td>报告质量</td><td>签单支持</td><td>验收通过</td></tr>
+    <tr><td><strong>知识去哪了</strong></td><td>沉淀回产品平台</td><td>留在代码库里</td><td>留在 PPT 里</td><td>留在方案文档里</td><td>留在项目组里</td></tr>
+    <tr><td><strong>跟客户的关系</strong></td><td>长期合作伙伴</td><td>间接（通过 PM）</td><td>短期顾问</td><td>签单前活跃</td><td>项目期间</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>一个简单的判别标准：<strong>如果一个人在客户现场写了生产代码，并且这些代码的价值最终反向沉淀进了公司的产品平台——他就是在做 FDE 的事</strong>，不管他的名片上写的是什么头衔。</p>
+
+<h3 id="ch0-5">为什么 2025-2026 年 FDE 突然火了？</h3>
+
+<p>FDE 这个概念存在了近 20 年，为什么在最近两年突然成为"科技界最热门的工作"（Andreessen Horowitz 语）？原因有三层：</p>
+
+<div class="compare-grid" style="grid-template-columns:1fr;">
+  <div class="compare-card" style="border-top:3px solid #ef4444;">
+    <h4>❶ AI 落地的"最后一公里"暴露了</h4>
+    <p>2023-2024 年，几乎每家企业都尝试了 AI。但据 MIT 研究，<strong>95% 的企业 AI 试点未能产生可衡量回报</strong>。模型不是问题，问题出在"模型如何接进真实的业务流程"——这恰好是 FDE 的核心价值区间。企业开始意识到：买一个模型 API 很容易，但让它在具体场景里产生价值，需要有人坐在业务现场把最后一公里走完。</p>
+  </div>
+</div>
+
+<div class="compare-grid" style="grid-template-columns:1fr;">
+  <div class="compare-card" style="border-top:3px solid #3b82f6;">
+    <h4>❷ AI Coding 工具降低了 FDE 的人才门槛</h4>
+    <p>2016 年做 FDE，你需要一个能同时写 Java 后端、React 前端和 SQL 数据管道的全栈工程师——这种人全球也找不出几万个。2026 年做 FDE，一个中级工程师搭配 Claude Code 或 Cursor，就能达到类似的产出。<strong>AI Coding 让"一个人做三个人的事"成为可能</strong>，FDE 模式因此从 Palantir 这种精英公司的专利，变成了中等规模企业也能实践的方法论。</p>
+  </div>
+</div>
+
+<div class="compare-grid" style="grid-template-columns:1fr;">
+  <div class="compare-card" style="border-top:3px solid #10b981;">
+    <h4>❸ 行业巨头的集体押注形成了信号效应</h4>
+    <p>2025-2026 年，<strong>OpenAI 投入 $40 亿成立独立 FDE 部署公司</strong>，Anthropic 联合黑石/高盛投入 $15 亿，Google Cloud 大规模招聘，Salesforce 宣布组建 1,000 人 FDE 团队，Deloitte 正式成立 FDE 实践部门。当行业最头部的公司同时做出同一个判断时，这不是巧合——这是范式转移的信号。FDE 岗位发布量在 2025 年 1-9 月同比增长了 <strong>800%</strong>。</p>
+  </div>
+</div>
+
+<p>理解了以上背景，接下来的分析会更清晰。下文将从传统交付模式的结构性问题出发，逐步展开 FDE 模式的技术架构、行业验证、企业适配分析和落地路径。</p>
+
 <!-- ==================== 第1章 ==================== -->
 <h2 id="ch1">1. 问题：传统交付模式的结构性困境</h2>
 
@@ -202,11 +366,11 @@
   <div class="flow-step">定制化</div>
 </div>
 
-<p>9 个工位，每跨一道信息衰减一次。跨岗位 KPI 隔离让每个人只对自己那段负责——这不是态度问题，是结构问题。</p>
+<p>从客户到最终交付，需求要经过多个工位的层层转述。每跨一道信息衰减一次，而跨岗位的 KPI 隔离让每个人只对自己那段负责——这不是态度问题，是结构问题。</p>
 
 <div class="callout info">
   <div class="callout-title">📐 信息衰减的量化估算</div>
-  假设每次跨工位转述导致 15% 的需求信息失真（语义损耗、优先级偏移、上下文丢失），经过 9 个工位后，原始需求的保真率仅为 <strong>0.85⁹ ≈ 23%</strong>。也就是说，开发拿到的需求可能只剩下客户原始意图的四分之一。
+  假设每次跨工位转述导致 15% 的需求信息失真（语义损耗、优先级偏移、上下文丢失），经过多轮转述后，原始需求的保真率会急剧下降。以 5 次转述为例，保真率仅为 <strong>0.85⁵ ≈ 44%</strong>；如果链路更长达到 7-8 次转述，保真率会降到 <strong>30% 以下</strong>。也就是说，最终执行者拿到的需求可能只剩下客户原始意图的三分之一甚至更少。
 </div>
 
 <p>这个规律在每个 B 端定制交付公司都存在，但程度不同。交付物越复杂、涉及的专业领域越多，信息衰减就越严重。</p>
@@ -1211,6 +1375,7 @@
 <aside class="toc-sidebar" id="tocSidebar">
   <div class="toc-title">本页大纲</div>
   <a href="#executive-summary" class="toc-link active">执行摘要</a>
+  <a href="#ch0" class="toc-link">FDE 五分钟入门</a>
   <a href="#ch1" class="toc-link">1. 传统交付的困境</a>
   <a href="#ch2" class="toc-link">2. FDE 模式的本质</a>
   <a href="#ch2-3" class="toc-link sub">Ontology 架构</a>
