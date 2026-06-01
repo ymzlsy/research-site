@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FDE 落地指南：从高层共识到组织执行 — Karaithy Research</title>
+  <meta name="description" content="当企业决定走 FDE 路线之后，产品、技术、销售各角色如何协作推动，以及 90 天内可验证的最小路径。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+
+<!-- Reading Progress -->
+<div class="reading-progress" id="readingProgress"></div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../../index.html" class="site-logo">
+      <span class="logo-icon">R</span>
+      <span>Research</span>
+      <span class="logo-text-sub">by Karaithy</span>
+    </a>
+    <div class="header-nav">
+      <a href="../../index.html">首页</a>
+      <a href="../fde-deep-dive/index.html">FDE 调研</a>
+      <a href="index.html" class="active">FDE 落地</a>
+      <a href="../ai-coding/index.html">AI Coding</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">🌙</button>
+    </div>
+  </div>
+</header>
+
+<!-- Layout -->
+<div class="article-layout">
+
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">目录</div>
+    <a href="#executive-summary" class="sidebar-link active">执行摘要</a>
+    <a href="#ch1" class="sidebar-link">1. 从共识到行动的断层</a>
+    <a href="#ch1-1" class="sidebar-link sub">1.1 "老板说要搞"之后</a>
+    <a href="#ch1-2" class="sidebar-link sub">1.2 FDE 落地为什么更难</a>
+    <a href="#ch2" class="sidebar-link">2. 各角色的切入点</a>
+    <a href="#ch2-1" class="sidebar-link sub">2.1 产品经理 → Echo</a>
+    <a href="#ch2-2" class="sidebar-link sub">2.2 工程师 → Delta</a>
+    <a href="#ch2-3" class="sidebar-link sub">2.3 销售 → 信息入口</a>
+    <a href="#ch2-4" class="sidebar-link sub">2.4 管理层 → 制度保障</a>
+    <a href="#ch3" class="sidebar-link">3. 90 天最小可行路径</a>
+    <a href="#ch3-1" class="sidebar-link sub">Phase 1: 选点试错</a>
+    <a href="#ch3-2" class="sidebar-link sub">Phase 2: 沉淀提炼</a>
+    <a href="#ch3-3" class="sidebar-link sub">Phase 3: 机制固化</a>
+    <a href="#ch4" class="sidebar-link">4. 组织阻力与应对</a>
+    <a href="#ch5" class="sidebar-link">5. 职业发展视角</a>
+    <a href="#ch5-1" class="sidebar-link sub">5.1 岗位迁移路径</a>
+    <a href="#ch5-2" class="sidebar-link sub">5.2 首倡者的价值</a>
+    <a href="#ch6" class="sidebar-link">6. 度量体系</a>
+    <a href="#appendix" class="sidebar-link">附录</a>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="main-content">
+<article class="article-body">
+
+<!-- Title -->
+<h1 id="top">FDE 落地指南：<br>从高层共识到组织执行</h1>
+
+<p class="subtitle">当企业决定走 FDE 路线之后，产品、技术、销售各角色如何协作推动，以及 90 天内可验证的最小路径。</p>
+
+<!-- Meta -->
+<div class="article-meta">
+  <div class="meta-author">
+    <div class="meta-avatar">K</div>
+    <div>
+      <div class="meta-name">Karaithy</div>
+      <div class="meta-role">Deep Research</div>
+    </div>
+  </div>
+  <span class="meta-dot">·</span>
+  <span class="meta-date">2026 年 6 月 1 日</span>
+  <span class="meta-dot">·</span>
+  <span class="meta-read-time">约 25 分钟阅读</span>
+</div>
+
+<!-- ==================== 执行摘要 ==================== -->
+<h2 id="executive-summary">执行摘要</h2>
+
+<div class="callout tip">
+  <div class="callout-title">💡 核心发现</div>
+  <strong>FDE（Forward Deployed Engineer）模式的价值已经被广泛认可，但"认可"与"落地"之间存在巨大的执行鸿沟。本文聚焦于一个具体问题：当一家 B 端定制化交付企业的管理层决定推进 FDE 模式后，各角色如何在 90 天内完成从共识到执行的跨越。</strong>
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-number">70%</div>
+    <div class="stat-label">组织变革项目<br>最终失败（McKinsey）</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">90天</div>
+    <div class="stat-label">最小可行验证<br>的建议周期</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">2人</div>
+    <div class="stat-label">FDE 最小试点单元<br>（1 PM + 1 工程师）</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">30%</div>
+    <div class="stat-label">第二个项目启动时间<br>预期缩短幅度</div>
+  </div>
+</div>
+
+<p><strong>本文的核心内容：</strong></p>
+<ol>
+  <li><strong>断层分析</strong>：为什么"老板说要搞"之后，大多数企业依然原地踏步——FDE 变革与普通工具导入有本质差异，它要求重新定义角色、流程和激励。</li>
+  <li><strong>角色地图</strong>：产品经理、工程师、销售、管理层四个角色在 FDE 模式下的具体工作内容变化，以及各自的切入策略。</li>
+  <li><strong>90 天路线图</strong>：三个阶段（选点试错 → 沉淀提炼 → 机制固化）的详细操作指南，包含可量化的阶段目标。</li>
+  <li><strong>阻力应对</strong>：五个典型组织阻力及其破解方法。</li>
+  <li><strong>度量体系</strong>：短期、中期、长期三层指标，让"FDE 有没有效"变成可量化的判断。</li>
+</ol>
+
+<div class="callout info">
+  <div class="callout-title">📌 阅读前提</div>
+  本文假设读者已了解 FDE 的基本概念。如果你还不清楚 FDE 是什么、Palantir 如何运作这套模式，建议先阅读 <a href="../fde-deep-dive/index.html">《FDE 落地可行性研究》</a>，然后再回到本文。
+</div>
+
+<!-- ==================== 第一章 ==================== -->
+<h2 id="ch1">1. 从共识到行动的断层</h2>
+
+<p>一个反复出现的场景：管理层在某次内部分享或行业会议中了解了 FDE 模式，被它的价值逻辑说服，当场拍板"我们也要搞"。然后呢？</p>
+
+<h3 id="ch1-1">1.1 "老板说要搞"之后通常会发生什么</h3>
+
+<p>根据对多家 B 端企业的观察，<strong>"高层共识 → 落地执行"之间存在一条典型的失败路径</strong>，可以被抽象为三个阶段：</p>
+
+<div class="flow-vertical">
+  <div class="flow-step">
+    <strong>阶段一：全员动员</strong><br>
+    管理层在公司内部宣布方向，要求各部门"拥抱变化"。中层管理者表态支持，一线员工礼貌性点头。
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <strong>阶段二：没有抓手</strong><br>
+    宣布之后，没有具体的试点项目、没有明确的责任人、没有调整 KPI。各部门回到日常工作节奏，"FDE 转型"变成一个悬浮在空中的口号。
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <strong>阶段三：不了了之</strong><br>
+    三个月后，管理层问"进展如何"，各部门面面相觑。变革悄无声息地死掉，但没有人正式宣布它失败——因为没有人承认它真正开始过。
+  </div>
+</div>
+
+<p>这个路径并不是 FDE 特有的。McKinsey 的一项经典研究指出，<strong>约 70% 的组织变革项目最终以失败告终</strong>，其中最常见的失败原因不是方向错误，而是<strong>执行层面的断裂</strong>：缺乏具体的试点、缺乏明确的责任人、缺乏与变革方向一致的激励机制。</p>
+
+<div class="callout warn">
+  <div class="callout-title">⚠️ 关键区分</div>
+  "高层认可"和"组织执行"之间的距离，远比大多数人想象的要大。认可是一个瞬间事件，执行是一个持续过程。<strong>高层的认可只解决了 10% 的问题——剩下 90% 是在各个角色的日常工作中把新模式跑起来。</strong>
+</div>
+
+<h3 id="ch1-2">1.2 FDE 落地为什么比其他变革更难</h3>
+
+<p>不是所有变革的难度都一样。买一个新工具、上一套新流程、引入一个新方法论——这些都是"变革"，但它们的实施难度有结构性的差异。FDE 模式之所以特别难落地，是因为<strong>它同时触动了三个维度</strong>：</p>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr><th>维度</th><th>普通工具导入</th><th>流程优化</th><th>FDE 变革</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>涉及角色</strong></td>
+      <td>单一部门（如开发团队换 IDE）</td>
+      <td>相关流程的上下游（如需求评审流程优化）</td>
+      <td><strong>跨产品、技术、销售、管理四个职能</strong></td>
+    </tr>
+    <tr>
+      <td><strong>流程变化</strong></td>
+      <td>局部替换（换工具，流程不变）</td>
+      <td>局部调整（优化某些环节）</td>
+      <td><strong>重构核心交付流程</strong>（从串行到并行，从远程到现场）</td>
+    </tr>
+    <tr>
+      <td><strong>KPI 影响</strong></td>
+      <td>不变</td>
+      <td>微调</td>
+      <td><strong>需要重新定义</strong>（从人天计价到业务结果计价）</td>
+    </tr>
+    <tr>
+      <td><strong>能力要求</strong></td>
+      <td>学习新工具</td>
+      <td>适应新流程</td>
+      <td><strong>角色能力模型重塑</strong>（PM 要懂技术，工程师要懂业务）</td>
+    </tr>
+    <tr>
+      <td><strong>失败成本</strong></td>
+      <td>低（换回去就行）</td>
+      <td>中（恢复旧流程）</td>
+      <td><strong>高</strong>（人员培养、客户信任、组织士气）</td>
+    </tr>
+    <tr>
+      <td><strong>实施周期</strong></td>
+      <td>1-2 周</td>
+      <td>1-2 个月</td>
+      <td><strong>3-6 个月起步，持续迭代</strong></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>上表的核心信息是：<strong>FDE 不是一个可以"从上往下推"的变革，它必须在每个角色的日常工作中找到切入点</strong>。这就引出了下一章的问题——各角色具体应该怎么做。</p>
+
+<!-- ==================== 第二章 ==================== -->
+<h2 id="ch2">2. 各角色的切入点</h2>
+
+<p>FDE 模式的核心不是创造一个叫"FDE"的新岗位，而是让现有角色的工作方式向 FDE 理念靠拢。以下用 Palantir 的角色术语来描述这种转变——Echo（面向客户的需求捕捉者）、Delta（快速原型构建者）——但重点不在术语本身，而在具体行为的变化。</p>
+
+<h3 id="ch2-1">2.1 产品经理 → Echo 角色</h3>
+
+<p>在传统 B 端交付中，产品经理的核心工作是<strong>"接需求"</strong>——客户说要什么，PM 翻译成需求文档，扔给开发。在 FDE 模式下，PM 的角色发生根本性转变：从<strong>被动的需求接收者</strong>变成<strong>主动的需求挖掘者</strong>。</p>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr><th>工作内容</th><th>传统模式</th><th>FDE 模式（Echo）</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>需求来源</strong></td>
+      <td>客户会议纪要、邮件、合同附件</td>
+      <td><strong>客户现场观察</strong>——看用户实际怎么操作，而不是听他们怎么说</td>
+    </tr>
+    <tr>
+      <td><strong>需求形式</strong></td>
+      <td>结构化需求文档（PRD）</td>
+      <td><strong>场景描述 + 可运行原型</strong>——"你看，是不是这个意思？"</td>
+    </tr>
+    <tr>
+      <td><strong>验证方式</strong></td>
+      <td>需求评审会议（内部）</td>
+      <td><strong>现场 demo</strong>——当天做、当天演、当天改</td>
+    </tr>
+    <tr>
+      <td><strong>核心能力</strong></td>
+      <td>文档写作、需求分析、项目管理</td>
+      <td><strong>业务洞察、快速原型、沟通共情</strong></td>
+    </tr>
+    <tr>
+      <td><strong>KPI 导向</strong></td>
+      <td>需求交付率、文档完整度</td>
+      <td><strong>客户问题解决率、现场 demo 产出数</strong></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout tip">
+  <div class="callout-title">💡 AI Coding 让 PM 也能"做碎石路"</div>
+  FDE 模式中有一个重要概念叫<strong>"碎石路"（gravel road）</strong>——先用最快速度铺出一条能走的路，验证方向正确后再铺柏油路。在 2026 年，AI Coding 工具（如 Claude Code、Cursor、GitHub Copilot）使得<strong>具备基本技术理解力的 PM 也能独立搭建可运行的原型</strong>。这极大地降低了 Echo 角色的技术门槛——PM 不需要成为全栈工程师，只需要能用 AI 工具把想法变成可演示的东西。
+</div>
+
+<h3 id="ch2-2">2.2 工程师 → Delta 角色</h3>
+
+<p>在 FDE 模式中，工程师的角色从<strong>"写工单代码"</strong>转变为<strong>"现场出活"</strong>。Palantir 的术语中，这种角色被称为 Delta——能快速交付业务价值增量的技术构建者。</p>
+
+<div class="compare-grid">
+  <div class="compare-card">
+    <h4>传统工程师（Dev）</h4>
+    <ul>
+      <li>在办公室写代码</li>
+      <li>根据 PM 的需求文档开发</li>
+      <li>专注于某一个技术栈</li>
+      <li>代码质量是核心 KPI</li>
+      <li>需求来源：JIRA 工单</li>
+      <li>跟客户距离：至少隔两层</li>
+    </ul>
+  </div>
+  <div class="compare-card">
+    <h4>Delta 工程师</h4>
+    <ul>
+      <li><strong>在客户现场写代码</strong></li>
+      <li><strong>根据自己观察到的问题开发</strong></li>
+      <li><strong>全栈能力 + AI 工具加持</strong></li>
+      <li><strong>业务问题解决是核心 KPI</strong></li>
+      <li><strong>需求来源：客户的真实工作流</strong></li>
+      <li><strong>跟客户距离：面对面</strong></li>
+    </ul>
+  </div>
+</div>
+
+<p>Dev 与 Delta 的代码职责划分尤其值得关注：</p>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr><th>代码类型</th><th>Dev 负责</th><th>Delta 负责</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>平台基础设施</strong></td>
+      <td>✅ 核心平台、SDK、API</td>
+      <td>❌ 不碰</td>
+    </tr>
+    <tr>
+      <td><strong>通用组件库</strong></td>
+      <td>✅ 构建和维护</td>
+      <td>⚡ 使用 + 反馈缺失的组件</td>
+    </tr>
+    <tr>
+      <td><strong>客户定制逻辑</strong></td>
+      <td>❌ 不直接参与</td>
+      <td>✅ <strong>核心工作——快速搭建</strong></td>
+    </tr>
+    <tr>
+      <td><strong>原型 / Demo</strong></td>
+      <td>❌ 不参与</td>
+      <td>✅ <strong>当天出、当天改</strong></td>
+    </tr>
+    <tr>
+      <td><strong>沉淀为平台能力</strong></td>
+      <td>✅ 接收 Delta 的反馈，产品化</td>
+      <td>⚡ 提炼共性需求，提交给 Dev</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout info">
+  <div class="callout-title">📌 技术栈适配</div>
+  Delta 角色要求<strong>全栈能力</strong>，但这不意味着每个方向都要精通。在 AI Coding 工具的加持下，一个有扎实后端基础的工程师可以借助 AI 工具完成前端开发，反之亦然。<strong>关键能力不是"什么都会写"，而是"什么都敢尝试，遇到不会的知道怎么用 AI 工具快速补齐"。</strong>
+</div>
+
+<h3 id="ch2-3">2.3 销售/客户经理 → 信息入口</h3>
+
+<p>在 FDE 模式下，销售的角色从<strong>"签单就走"</strong>转变为<strong>"全程跟进"</strong>。这个转变的核心逻辑是：<strong>销售是离客户最近的人，他们掌握着 Echo 团队最需要的情报。</strong></p>
+
+<div class="flow-vertical">
+  <div class="flow-step">
+    <strong>传统模式：信息断裂</strong><br>
+    销售签单 → 把合同扔给项目经理 → 项目经理根据合同理解需求 → 开发团队根据项目经理的理解开发<br>
+    <em style="color:var(--text-tertiary);">每经过一层传递，信息失真 30-50%</em>
+  </div>
+  <div class="flow-arrow">↓ 转变为</div>
+  <div class="flow-step">
+    <strong>FDE 模式：信息闭环</strong><br>
+    销售签单 → <strong>持续向 Echo 团队同步客户的真实反馈和隐性需求</strong> → Echo 据此调整优先级 → Delta 现场验证 → 销售用验证结果推动客户下一步合作<br>
+    <em style="color:var(--text-tertiary);">销售从"一次性交易"变成"持续关系经营"</em>
+  </div>
+</div>
+
+<p>销售成为 Echo 团队情报来源的<strong>三个具体行为</strong>：</p>
+<ol>
+  <li><strong>定期同步客户侧的"暗信号"</strong>——客户私下抱怨什么、竞品在展示什么、关键决策人的态度变化</li>
+  <li><strong>牵线搭桥</strong>——帮助 Echo/Delta 团队接触到客户的一线操作人员（而不只是客户的管理层）</li>
+  <li><strong>反馈闭环</strong>——把 FDE 团队的交付成果翻译成客户管理层能理解的"业务价值语言"</li>
+</ol>
+
+<h3 id="ch2-4">2.4 管理层 → 制度保障</h3>
+
+<p>管理层在 FDE 变革中的角色不是"推动者"，而是<strong>"制度保障者"</strong>。具体来说，需要在两个方面提供支持：</p>
+
+<div class="compare-grid">
+  <div class="compare-card">
+    <h4>KPI 重新设计</h4>
+    <ul>
+      <li><strong>传统</strong>：人天计价、功能交付率、代码行数</li>
+      <li><strong>FDE</strong>：客户问题解决数、现场 demo 产出量、需求失真率下降幅度、代码复用率</li>
+      <li><strong>关键原则</strong>：KPI 必须跟行为一致——如果你考核"功能交付率"，就别指望团队去做"现场原型迭代"</li>
+    </ul>
+  </div>
+  <div class="compare-card">
+    <h4>资源分配</h4>
+    <ul>
+      <li><strong>不要全面铺开</strong>：从 1 个项目试点开始</li>
+      <li><strong>保护试点团队</strong>：给他们 90 天的试错空间，不要在 30 天后就要求看 ROI</li>
+      <li><strong>双轨并行</strong>：FDE 试点与常规项目并行运转，不中断正常业务</li>
+      <li><strong>关键原则</strong>：资源不需要多，但需要稳定和明确——"这两个人接下来 90 天专注做这件事"</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== 第三章 ==================== -->
+<h2 id="ch3">3. 90 天最小可行路径</h2>
+
+<p>与其制定一个宏大的"FDE 转型三年规划"，不如先用 90 天验证一件事：<strong>FDE 模式在这家企业的具体场景下是否能产生可量化的价值。</strong></p>
+
+<div class="callout warn">
+  <div class="callout-title">⚠️ 为什么是 90 天</div>
+  <strong>30 天太短</strong>——还没来得及完成一个完整的"需求发现 → 原型构建 → 客户验证"循环。<strong>180 天太长</strong>——管理层的耐心会耗尽，团队的动力会衰减。90 天刚好足够完成 3 轮迭代，产出足够有说服力的数据，同时不至于让组织承受过大的变革压力。
+</div>
+
+<h3 id="ch3-1">Phase 1（Day 1-30）：选点试错</h3>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-label">Day 1-5</div>
+    <div class="timeline-title">选择试点项目</div>
+    <div class="timeline-desc">
+      选择标准：<strong>①</strong> 客户关系良好、愿意配合新模式；<strong>②</strong> 项目规模中等，不至于太小没有代表性，也不至于太大无法控制风险；<strong>③</strong> 存在明显的"需求失真"或"交付延迟"痛点。<br>
+      <em>反面教材：选一个已经烂掉的项目来"试验"——失败了不知道是 FDE 没用还是项目本身太烂。</em>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-label">Day 5-10</div>
+    <div class="timeline-title">组建最小 FDE 单元</div>
+    <div class="timeline-desc">
+      <strong>1 个 PM（Echo）+ 1 个工程师（Delta）</strong>，共 2 人。PM 负责需求挖掘和客户沟通，工程师负责快速原型构建。两人需要坐在一起工作，高频沟通。<br>
+      <strong>选人标准</strong>：不一定是能力最强的人，但一定是<strong>对新模式有好奇心、愿意走出舒适区</strong>的人。
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-label">Day 10-30</div>
+    <div class="timeline-title">深入客户现场</div>
+    <div class="timeline-desc">
+      FDE 小组进入客户现场，用 FDE 方式工作：<strong>观察 → 原型 → 演示 → 迭代</strong>。<br>
+      Phase 1 的目标不是"做出一个完美产品"，而是<strong>在客户现场做出至少 1 个可用 demo</strong>，证明"近距离、快迭代"确实能解决传统模式解决不了的问题。
+    </div>
+  </div>
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-number">1个</div>
+    <div class="stat-label">试点项目</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">2人</div>
+    <div class="stat-label">最小 FDE 单元</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">≥1个</div>
+    <div class="stat-label">可用 Demo 产出</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">30天</div>
+    <div class="stat-label">Phase 1 周期</div>
+  </div>
+</div>
+
+<h3 id="ch3-2">Phase 2（Day 31-60）：沉淀提炼</h3>
+
+<p>Phase 1 产出了客户现场的"碎石路"——它能跑、客户认可，但还是一次性的。Phase 2 的核心任务是<strong>把一次性经验变成可复用资产</strong>。</p>
+
+<div class="flow-vertical">
+  <div class="flow-step">
+    <strong>Step 1：经验复盘</strong><br>
+    FDE 小组回顾 Phase 1 的所有交付物，识别哪些是客户独有的定制需求，哪些是其他客户也可能遇到的共性问题。<br>
+    <em>经验法则：通常 30-40% 的定制开发工作可以被抽象为通用组件。</em>
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <strong>Step 2：模板化</strong><br>
+    把共性部分抽象为可复用的模板、组件或配置方案。这就是 Palantir 所说的<strong>"碎石路 → 柏油路"</strong>的第一步。
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <strong>Step 3：第二个项目验证</strong><br>
+    用 Phase 1 沉淀的模板启动第二个项目。<strong>核心度量：第二个项目的启动时间是否比第一个缩短了 30% 以上。</strong>如果是，证明沉淀机制有效；如果不是，需要回检沉淀物的抽象粒度是否合适。
+  </div>
+</div>
+
+<div class="callout tip">
+  <div class="callout-title">💡 "碎石路→柏油路"的核心逻辑</div>
+  <strong>碎石路</strong>：在客户现场快速搭建的、能解决问题但不够通用的方案。可能代码不优雅，架构不完美，但它能用、客户认可。<br><br>
+  <strong>柏油路</strong>：把碎石路中的共性部分产品化，变成平台能力，让下一个客户直接受益。<br><br>
+  <strong>关键原则：先有碎石路，再铺柏油路。永远不要在没有碎石路的情况下直接铺柏油路</strong>——那叫"闭门造车"。
+</div>
+
+<h3 id="ch3-3">Phase 3（Day 61-90）：机制固化</h3>
+
+<p>Phase 3 的目标不是"继续做更多项目"，而是<strong>把 Phase 1-2 的做法固化为组织机制</strong>，让它不依赖特定个人就能持续运转。</p>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr><th>固化项</th><th>具体内容</th><th>产出物</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>流程文档</strong></td>
+      <td>FDE 小组的工作流程、客户现场的操作规范、"碎石路→柏油路"的沉淀流程</td>
+      <td>操作手册 1.0</td>
+    </tr>
+    <tr>
+      <td><strong>定期回顾</strong></td>
+      <td>建立每两周一次的 FDE 复盘会议——做了什么、学到什么、哪些可以沉淀</td>
+      <td>复盘会议模板</td>
+    </tr>
+    <tr>
+      <td><strong>成果汇报</strong></td>
+      <td>向管理层汇报 90 天的量化成果：项目数、demo 数、客户反馈、复用率、启动时间变化</td>
+      <td>90 天成果报告</td>
+    </tr>
+    <tr>
+      <td><strong>扩大提案</strong></td>
+      <td>如果数据正向，提交扩大试点范围的提案（更多项目、更多人员）</td>
+      <td>Phase 2 扩展计划</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout critical">
+  <div class="callout-title">🚨 Phase 3 最容易犯的错误</div>
+  <strong>过早扩大规模。</strong>90 天的试点如果成功了，管理层很容易产生"加大投入、全面铺开"的冲动。但 FDE 模式的核心是<strong>"小团队、深嵌入"</strong>，一旦团队规模膨胀过快，沟通成本会急剧上升，反而失去了 FDE 的核心优势。建议每次扩展不超过 1-2 个 FDE 单元，确保每个新单元都有足够的指导和支持。
+</div>
+
+<!-- ==================== 第四章 ==================== -->
+<h2 id="ch4">4. 组织阻力与应对</h2>
+
+<p>FDE 变革不会一帆风顺。以下是五个最典型的组织阻力，以及经过实践验证的应对策略。</p>
+
+<div class="accordion">
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <span>① "这不是我的活"——跨职能边界冲突</span>
+      <span class="accordion-icon">+</span>
+    </div>
+    <div class="accordion-body">
+      <p><strong>表现</strong>：PM 说"写代码不是我的事"，工程师说"跟客户沟通不是我的事"，销售说"项目执行不是我的事"。每个人都守着自己的职责边界，不愿意越界。</p>
+      <p><strong>根因</strong>：传统组织的职责边界是清晰的，人们在边界内工作感觉安全。FDE 模式要求打破这些边界，这会引发不安全感。</p>
+      <p><strong>应对</strong>：</p>
+      <ul>
+        <li><strong>不要一开始就要求所有人打破边界</strong>——先让试点团队的 2 个人尝试，用他们的成功故事感染其他人</li>
+        <li><strong>重新定义"越界"为"扩展"</strong>——PM 学习用 AI 工具做原型不是"抢工程师的活"，而是"扩展自己的能力边界"</li>
+        <li><strong>建立安全感</strong>——明确告诉团队：尝试新方式不会影响绩效评估，失败不会被惩罚</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <span>② "我的 KPI 没有这一项"——激励错位</span>
+      <span class="accordion-icon">+</span>
+    </div>
+    <div class="accordion-body">
+      <p><strong>表现</strong>：团队认可 FDE 的价值，但日常行为不改变，因为绩效考核仍然按旧标准执行。工程师知道去客户现场有价值，但他的 KPI 是"代码提交量"，于是他选择留在办公室写代码。</p>
+      <p><strong>根因</strong>：人们的行为跟随激励，不跟随口号。如果 KPI 没变，行为就不会变。</p>
+      <p><strong>应对</strong>：</p>
+      <ul>
+        <li><strong>试点团队的 KPI 单独设计</strong>——不要求他们同时满足旧 KPI 和新 KPI</li>
+        <li><strong>新 KPI 示例</strong>：客户现场 demo 数（而非代码行数）、客户反馈响应时间（而非功能交付周期）、沉淀组件复用次数（而非个人代码产出）</li>
+        <li><strong>管理层背书</strong>——在绩效评估时明确表态：试点团队按新 KPI 考核，不跟其他团队横向对比</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <span>③ "现有项目已经排满了"——资源争夺</span>
+      <span class="accordion-icon">+</span>
+    </div>
+    <div class="accordion-body">
+      <p><strong>表现</strong>：每个人都认同 FDE 应该搞，但每个人都说自己手头的项目更紧急。试点团队组不起来，因为"抽不出人"。</p>
+      <p><strong>根因</strong>：在存量博弈中，每抽调一个人去做新事，就意味着旧事有人要多扛一份。</p>
+      <p><strong>应对</strong>：</p>
+      <ul>
+        <li><strong>管理层必须做减法</strong>——不是"在现有工作之上加一个 FDE 试点"，而是"暂停或降级某个优先级较低的项目，把人腾出来"</li>
+        <li><strong>最小化资源需求</strong>——2 个人足够启动试点，不要一上来就要 5 个人</li>
+        <li><strong>明确时间窗口</strong>——"这两个人只需要专注 90 天"，给出明确的回归时间，减少其他团队的焦虑</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <span>④ "客户不配合"——外部阻力</span>
+      <span class="accordion-icon">+</span>
+    </div>
+    <div class="accordion-body">
+      <p><strong>表现</strong>：客户习惯了传统的"你做我验收"模式，对 FDE 团队深入现场感到不适——"你们为什么要来我们公司坐？直接把系统做好交给我就行了。"</p>
+      <p><strong>根因</strong>：客户也有自己的舒适区。让供应商深入现场意味着暴露自己的真实工作流程，这会引发不安。</p>
+      <p><strong>应对</strong>：</p>
+      <ul>
+        <li><strong>用价值换信任</strong>——不是来"审计"你的流程，而是来"帮你解决实际问题"。第一天就拿出一个有用的东西</li>
+        <li><strong>找对切入点</strong>——不要一开始就要求"全面嵌入"，先从一个小问题入手："你们有没有哪个操作特别麻烦？我来看看能不能帮你简化"</li>
+        <li><strong>管理客户预期</strong>——告诉客户这是新的合作方式的试验，双方都在学习和适应</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <span>⑤ "做了但没人看"——沉淀机制缺失</span>
+      <span class="accordion-icon">+</span>
+    </div>
+    <div class="accordion-body">
+      <p><strong>表现</strong>：FDE 团队在客户现场做了很多有价值的东西，但这些经验和代码躺在个人电脑或私有分支里，其他团队完全不知道。下一个类似的项目，又从零开始。</p>
+      <p><strong>根因</strong>：沉淀是需要成本的——写文档、整理代码、抽象组件，这些都需要时间。如果没有明确的机制和激励，没有人会主动做。</p>
+      <p><strong>应对</strong>：</p>
+      <ul>
+        <li><strong>把沉淀写进流程</strong>——每个 sprint 必须有 10-20% 的时间用于沉淀，不是"有空再做"</li>
+        <li><strong>低门槛起步</strong>——不要求写完美的文档，先从"15 分钟 Loom 录屏讲解"开始</li>
+        <li><strong>建立内部展示机制</strong>——每两周一次的"FDE Show & Tell"，让沉淀的东西被看见、被认可</li>
+        <li><strong>把复用纳入 KPI</strong>——"你沉淀的组件被其他项目复用了多少次"，让沉淀有回报</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 第五章 ==================== -->
+<h2 id="ch5">5. 职业发展视角</h2>
+
+<p>FDE 模式不仅改变了企业的交付方式，也改变了个体的职业路径。对于 B 端企业的从业者来说，FDE 模式打开了一些传统路径上很难触及的职业可能性。</p>
+
+<h3 id="ch5-1">5.1 FDE 模式下的岗位迁移路径</h3>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr><th>原始岗位</th><th>传统定义</th><th>FDE 角色</th><th>新增核心技能</th><th>职业天花板变化</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>产品经理</strong></td>
+      <td>写需求文档、做项目管理</td>
+      <td>Echo（需求捕捉 + 原型构建）</td>
+      <td>AI Coding、业务洞察、现场沟通</td>
+      <td>从"项目 PM"到<strong>"业务架构师"</strong>——能定义产品方向而不只是执行</td>
+    </tr>
+    <tr>
+      <td><strong>工程师</strong></td>
+      <td>按工单写代码</td>
+      <td>Delta（现场构建 + 平台沉淀）</td>
+      <td>全栈能力、业务理解、客户沟通</td>
+      <td>从"高级开发"到<strong>"技术合伙人"</strong>——能独立负责一个客户的技术方案</td>
+    </tr>
+    <tr>
+      <td><strong>销售</strong></td>
+      <td>签单、维护客户关系</td>
+      <td>客户成功（信息枢纽 + 价值翻译）</td>
+      <td>业务理解、数据分析、关系深耕</td>
+      <td>从"销售代表"到<strong>"客户成功负责人"</strong>——从一次性交易到持续价值创造</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout info">
+  <div class="callout-title">📌 能力复合的乘法效应</div>
+  在传统分工体系中，每个岗位的能力是<strong>加法</strong>——你是一个"会 Java + 会 Spring Boot + 会数据库"的后端工程师。在 FDE 模式下，能力变成<strong>乘法</strong>——"懂技术 × 懂业务 × 会沟通"的人，其价值不是三种能力的简单相加，而是指数级的放大。市场上这种复合型人才极其稀少，这也解释了为什么 FDE 岗位的薪资溢价通常在 25-40%。
+</div>
+
+<h3 id="ch5-2">5.2 对"首倡者"的特殊价值</h3>
+
+<p>在任何组织中，第一个提出并推动新模式的人都会获得一些独特的优势。这不是功劳簿上的虚名，而是实实在在的职业资产：</p>
+
+<div class="stat-grid">
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.5rem;">🏁</div>
+    <div class="stat-label" style="font-size:0.95rem;line-height:1.6;"><strong>先发优势</strong><br>在组织内第一个积累 FDE 实践经验的人，自然成为后续推广的核心节点。当组织扩大 FDE 规模时，首倡者是最有资格带队的人。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.5rem;">🔗</div>
+    <div class="stat-label" style="font-size:0.95rem;line-height:1.6;"><strong>跨部门影响力</strong><br>FDE 本身是跨职能的，推动 FDE 的过程会让首倡者建立起跨产品、技术、销售的协作网络。这种网络在传统的"部门竖井"中几乎不可能形成。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.5rem;">📢</div>
+    <div class="stat-label" style="font-size:0.95rem;line-height:1.6;"><strong>内部品牌</strong><br>在组织内被认知为"那个推动了 FDE 变革的人"，这种标签的价值远超任何一个具体项目的交付。它意味着"这个人有战略视野、有执行力、能推动跨组织协作"。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.5rem;">🌐</div>
+    <div class="stat-label" style="font-size:0.95rem;line-height:1.6;"><strong>行业话语权</strong><br>FDE 是一个正在崛起的行业趋势。早期实践者在行业社区中的发言权远超后来者——因为他们有真实的一线经验，而不只是理论分析。</div>
+  </div>
+</div>
+
+<div class="callout warn">
+  <div class="callout-title">⚠️ 一个重要的前提</div>
+  首倡者的价值建立在<strong>"推动成功"</strong>而非<strong>"提出想法"</strong>的基础上。光提出"我们应该搞 FDE"不够——<strong>必须在试点中拿到可量化的成果</strong>。想法不值钱，执行才值钱。在组织的记忆中，"那个推动了 FDE 并让它跑起来的人"和"那个提了一嘴 FDE 然后什么都没发生的人"，是完全不同的两种标签。
+</div>
+
+<!-- ==================== 第六章 ==================== -->
+<h2 id="ch6">6. 度量体系：怎么知道 FDE 在生效</h2>
+
+<p>"FDE 到底有没有用"不能凭感觉回答。以下是一套分层的度量体系，帮助企业在不同时间尺度上评估 FDE 模式的效果。</p>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr><th>时间维度</th><th>指标</th><th>度量方法</th><th>目标参考值</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3"><strong>短期<br>（30 天）</strong></td>
+      <td>现场 Demo 产出数</td>
+      <td>FDE 团队在客户现场构建的可演示原型数量</td>
+      <td>≥ 3 个 / 月</td>
+    </tr>
+    <tr>
+      <td>客户反馈响应时间</td>
+      <td>从客户提出问题到 FDE 团队给出可演示方案的平均时间</td>
+      <td>≤ 48 小时（传统模式通常 2-4 周）</td>
+    </tr>
+    <tr>
+      <td>需求理解准确率</td>
+      <td>FDE 团队做出的 demo 在第一轮演示后客户接受的比例</td>
+      <td>≥ 70%</td>
+    </tr>
+    <tr>
+      <td rowspan="3"><strong>中期<br>（90 天）</strong></td>
+      <td>项目启动时间</td>
+      <td>从项目启动到第一个可用交付物的天数</td>
+      <td>比传统模式缩短 30%+</td>
+    </tr>
+    <tr>
+      <td>需求失真率</td>
+      <td>最终交付物与客户真实需求之间的偏差程度（通过客户满意度调查量化）</td>
+      <td>比传统模式下降 40%+</td>
+    </tr>
+    <tr>
+      <td>代码/方案复用率</td>
+      <td>Phase 1 沉淀的组件/模板在 Phase 2 项目中的复用比例</td>
+      <td>≥ 25%</td>
+    </tr>
+    <tr>
+      <td rowspan="3"><strong>长期<br>（6 个月+）</strong></td>
+      <td>客户续约率</td>
+      <td>采用 FDE 模式服务的客户的续约/续购比例</td>
+      <td>比传统模式提升 15%+</td>
+    </tr>
+    <tr>
+      <td>平台厚度</td>
+      <td>可复用组件库的规模和覆盖场景数</td>
+      <td>每季度新增 5+ 可复用组件</td>
+    </tr>
+    <tr>
+      <td>人均产出</td>
+      <td>FDE 模式下每人负责的客户数 / 项目数</td>
+      <td>比传统模式提升 50%+</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout tip">
+  <div class="callout-title">💡 度量的三个原则</div>
+  <ol>
+    <li><strong>先度量行为变化，再度量业务结果</strong>——前 30 天关注"FDE 团队有没有在客户现场出 demo"，而不是"收入有没有增长"。行为变化是因，业务结果是果。</li>
+    <li><strong>对标自己，不对标 Palantir</strong>——Palantir 有 20 年的 FDE 积累，试点阶段不应该用 Palantir 的标准来要求自己。正确的对标是"比自己的传统模式好多少"。</li>
+    <li><strong>量化但不教条</strong>——上表的"目标参考值"只是参考，每家企业的基线不同。重要的是趋势方向（在改善）而不是绝对数值。</li>
+  </ol>
+</div>
+
+<div class="compare-grid">
+  <div class="compare-card">
+    <h4>领先指标（先行信号）</h4>
+    <ul>
+      <li>FDE 团队在客户现场的驻场天数</li>
+      <li>每周 demo 产出数</li>
+      <li>客户一线操作人员的参与度</li>
+      <li>内部"碎石路→柏油路"提交数</li>
+    </ul>
+  </div>
+  <div class="compare-card">
+    <h4>滞后指标（结果确认）</h4>
+    <ul>
+      <li>客户续约率变化</li>
+      <li>项目利润率变化</li>
+      <li>人均服务客户数变化</li>
+      <li>跨客户代码复用率</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== 附录 ==================== -->
+<h2 id="appendix">附录</h2>
+
+<h3>A. 术语表</h3>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr><th>术语</th><th>定义</th><th>出处</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>FDE</strong></td>
+      <td>Forward Deployed Engineer，前线部署工程师。被派驻到客户现场，能写生产级代码、对业务结果负责的工程师角色。</td>
+      <td>Palantir, 2005</td>
+    </tr>
+    <tr>
+      <td><strong>Echo</strong></td>
+      <td>面向客户的需求捕捉者角色。在 FDE 团队中负责需求挖掘、业务洞察、客户沟通。</td>
+      <td>Palantir 内部术语</td>
+    </tr>
+    <tr>
+      <td><strong>Delta</strong></td>
+      <td>快速原型构建者角色。在 FDE 团队中负责将需求快速转化为可运行的代码和演示。</td>
+      <td>Palantir 内部术语</td>
+    </tr>
+    <tr>
+      <td><strong>碎石路 / Gravel Road</strong></td>
+      <td>在客户现场快速搭建的、能解决问题但不够通用的临时方案。目的是快速验证方向。</td>
+      <td>FDE 实践社区</td>
+    </tr>
+    <tr>
+      <td><strong>柏油路 / Paved Road</strong></td>
+      <td>将碎石路中验证有效的共性部分产品化、标准化，形成可被其他客户复用的平台能力。</td>
+      <td>FDE 实践社区</td>
+    </tr>
+    <tr>
+      <td><strong>Ontology</strong></td>
+      <td>Palantir 的核心数据架构。将现实世界的业务实体（人、物、事件）映射为数据对象，建立统一的语义层。</td>
+      <td>Palantir Foundry</td>
+    </tr>
+    <tr>
+      <td><strong>AIP Boot Camp</strong></td>
+      <td>Palantir 的客户导入模式。用 5 天时间在客户现场完成从问题识别到可用原型的全过程。</td>
+      <td>Palantir, 2023</td>
+    </tr>
+    <tr>
+      <td><strong>AI Coding</strong></td>
+      <td>利用大语言模型辅助编程的工具和工作方式。代表工具包括 Claude Code、Cursor、GitHub Copilot 等。</td>
+      <td>行业通用</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>B. 参考资料</h3>
+
+<div style="margin:24px 0;padding:24px 28px;background:var(--bg-secondary);border-radius:var(--radius-lg);border:1px solid var(--border-color);">
+  <div style="margin-bottom:16px;">
+    <strong style="font-size:0.85rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;">系列文章</strong>
+    <ul style="margin:8px 0;padding-left:20px;line-height:2;">
+      <li><a href="../fde-deep-dive/index.html">FDE 落地可行性研究</a> — 本站前序文章，覆盖 FDE 概念全景、Palantir 模式解析、行业适配分析</li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom:16px;">
+    <strong style="font-size:0.85rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;">行业分析</strong>
+    <ul style="margin:8px 0;padding-left:20px;line-height:2;">
+      <li><a href="https://a16z.com/who-will-capture-value-in-the-ai-value-chain/" target="_blank">Who Will Capture Value in the AI Value Chain</a> — a16z 对 AI 价值链分布的深度分析</li>
+      <li><a href="https://blog.pragmaticengineer.com/the-pulse-forward-deployed-engineering-heats-up-again/" target="_blank">Forward Deployed Engineering Heats Up Again</a> — The Pragmatic Engineer 对 FDE 趋势的分析</li>
+      <li><a href="https://www.mckinsey.com/featured-insights/mckinsey-global-surveys/conditions-for-change-management-success" target="_blank">McKinsey: Conditions for Change Management Success</a> — McKinsey 关于组织变革成功条件的研究</li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom:16px;">
+    <strong style="font-size:0.85rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;">Palantir 官方</strong>
+    <ul style="margin:8px 0;padding-left:20px;line-height:2;">
+      <li><a href="https://www.palantir.com/platforms/aip/bootcamp/" target="_blank">Palantir AIP Bootcamp</a> — 官方 Boot Camp 介绍</li>
+      <li><a href="https://www.palantir.com/platforms/ontology/" target="_blank">Palantir Ontology</a> — Ontology 核心概念</li>
+      <li><a href="https://www.palantir.com/docs/foundry/ai-fde/overview" target="_blank">AI FDE 官方文档</a> — AI FDE 功能概述</li>
+    </ul>
+  </div>
+
+  <div>
+    <strong style="font-size:0.85rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;">AI Coding 工具</strong>
+    <ul style="margin:8px 0;padding-left:20px;line-height:2;">
+      <li><a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">Claude Code</a> — Anthropic 的 AI Coding CLI 工具</li>
+      <li><a href="https://cursor.sh/" target="_blank">Cursor</a> — AI-first 代码编辑器</li>
+      <li><a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a> — GitHub 的 AI 编程助手</li>
+    </ul>
+  </div>
+</div>
+
+<hr style="margin:48px 0 24px;border:none;border-top:1px solid var(--border-color);">
+
+<p style="text-align:center;color:var(--text-tertiary);font-size:0.85rem;">
+  © 2026 Karaithy Research<br>
+  本文为个人调研。<br>
+  <a href="../../index.html">← 返回 Research 首页</a>
+</p>
+
+</article>
+</div>
+
+<!-- Right TOC -->
+<aside class="toc-sidebar" id="tocSidebar">
+  <div class="toc-title">本页大纲</div>
+  <a href="#executive-summary" class="toc-link active">执行摘要</a>
+  <a href="#ch1" class="toc-link">1. 从共识到行动的断层</a>
+  <a href="#ch1-1" class="toc-link sub">1.1 "老板说要搞"之后</a>
+  <a href="#ch1-2" class="toc-link sub">1.2 为什么更难</a>
+  <a href="#ch2" class="toc-link">2. 各角色的切入点</a>
+  <a href="#ch2-1" class="toc-link sub">PM → Echo</a>
+  <a href="#ch2-2" class="toc-link sub">工程师 → Delta</a>
+  <a href="#ch2-3" class="toc-link sub">销售 → 信息入口</a>
+  <a href="#ch2-4" class="toc-link sub">管理层 → 制度</a>
+  <a href="#ch3" class="toc-link">3. 90 天路径</a>
+  <a href="#ch3-1" class="toc-link sub">Phase 1: 选点试错</a>
+  <a href="#ch3-2" class="toc-link sub">Phase 2: 沉淀提炼</a>
+  <a href="#ch3-3" class="toc-link sub">Phase 3: 机制固化</a>
+  <a href="#ch4" class="toc-link">4. 组织阻力</a>
+  <a href="#ch5" class="toc-link">5. 职业发展</a>
+  <a href="#ch5-1" class="toc-link sub">岗位迁移路径</a>
+  <a href="#ch5-2" class="toc-link sub">首倡者价值</a>
+  <a href="#ch6" class="toc-link">6. 度量体系</a>
+  <a href="#appendix" class="toc-link">附录</a>
+</aside>
+
+</div><!-- /article-layout -->
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Mobile sidebar toggle -->
+<button id="sidebarToggle" style="display:none;position:fixed;bottom:32px;left:16px;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:1rem;cursor:pointer;z-index:200;box-shadow:var(--shadow-md);" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+
+<script>
+// Theme toggle
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  if (savedTheme === 'dark') document.querySelector('.theme-toggle').textContent = '☀️';
+}
+
+// Accordion
+function toggleAccordion(header) {
+  const item = header.parentElement;
+  item.classList.toggle('open');
+}
+
+// Reading progress
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  document.getElementById('readingProgress').style.width = progress + '%';
+
+  // Back to top
+  const btn = document.getElementById('backToTop');
+  if (scrollTop > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+// Sidebar active state
+const sidebarLinks = document.querySelectorAll('.sidebar-link');
+const tocLinks = document.querySelectorAll('.toc-link');
+const sections = [];
+sidebarLinks.forEach(link => {
+  const id = link.getAttribute('href')?.replace('#','');
+  if (id) {
+    const el = document.getElementById(id);
+    if (el) sections.push({ id, el, link });
+  }
+});
+
+function updateActive() {
+  let current = '';
+  for (const s of sections) {
+    if (s.el.getBoundingClientRect().top <= 120) current = s.id;
+  }
+  sidebarLinks.forEach(l => l.classList.remove('active'));
+  tocLinks.forEach(l => l.classList.remove('active'));
+  if (current) {
+    const activeLink = document.querySelector(`.sidebar-link[href="#${current}"]`);
+    const activeToc = document.querySelector(`.toc-link[href="#${current}"]`);
+    if (activeLink) activeLink.classList.add('active');
+    if (activeToc) activeToc.classList.add('active');
+  }
+}
+window.addEventListener('scroll', updateActive);
+
+// Mobile sidebar toggle visibility
+function checkMobile() {
+  document.getElementById('sidebarToggle').style.display = window.innerWidth <= 900 ? 'flex' : 'none';
+}
+window.addEventListener('resize', checkMobile);
+checkMobile();
+</script>
+
+</body>
+</html>

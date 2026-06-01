@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Coding 工作流：从个人工具到团队工程化 — Karaithy Research</title>
+  <meta name="description" content="当 AI 把写代码的成本打到接近零，真正的瓶颈转移到了哪里？一份从产品经理视角出发的 AI Coding 深度实践报告。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+
+<!-- Reading Progress -->
+<div class="reading-progress" id="readingProgress"></div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../../index.html" class="site-logo">
+      <span class="logo-icon">R</span>
+      <span>Research</span>
+      <span class="logo-text-sub">by Karaithy</span>
+    </a>
+    <div class="header-nav">
+      <a href="../../index.html">首页</a>
+      <a href="../fde-deep-dive/index.html">FDE 调研</a>
+      <a href="../fde-landing-guide/index.html">FDE 落地</a>
+      <a href="index.html" class="active">AI Coding</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">🌙</button>
+    </div>
+  </div>
+</header>
+
+<!-- Layout -->
+<div class="article-layout">
+
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">目录</div>
+    <a href="#executive-summary" class="sidebar-link active">执行摘要</a>
+    <a href="#ch1" class="sidebar-link">1. AI Coding 五分钟入门</a>
+    <a href="#ch1-1" class="sidebar-link sub">1.1 什么是 AI Coding</a>
+    <a href="#ch1-2" class="sidebar-link sub">1.2 工具全景图</a>
+    <a href="#ch1-3" class="sidebar-link sub">1.3 为什么 2026 年是拐点</a>
+    <a href="#ch2" class="sidebar-link">2. 范式转移：Prompt 到 Harness</a>
+    <a href="#ch2-1" class="sidebar-link sub">2.1 三个阶段的演进</a>
+    <a href="#ch2-2" class="sidebar-link sub">2.2 什么是 Harness</a>
+    <a href="#ch2-3" class="sidebar-link sub">2.3 Skills 体系</a>
+    <a href="#ch3" class="sidebar-link">3. PM 用 AI Coding 做什么</a>
+    <a href="#ch3-1" class="sidebar-link sub">3.1 Evals 取代 PRD</a>
+    <a href="#ch3-2" class="sidebar-link sub">3.2 Demo-first 开发</a>
+    <a href="#ch3-3" class="sidebar-link sub">3.3 从生产者到判断者</a>
+    <a href="#ch4" class="sidebar-link">4. 团队工程化</a>
+    <a href="#ch4-1" class="sidebar-link sub">4.1 个人效率 ≠ 团队效率</a>
+    <a href="#ch4-2" class="sidebar-link sub">4.2 工程化四层次</a>
+    <a href="#ch4-3" class="sidebar-link sub">4.3 组织基础设施</a>
+    <a href="#ch5" class="sidebar-link">5. 实战案例</a>
+    <a href="#ch5-1" class="sidebar-link sub">5.1 60 分钟速赛</a>
+    <a href="#ch5-2" class="sidebar-link sub">5.2 PM 工作流变革</a>
+    <a href="#ch5-3" class="sidebar-link sub">5.3 知识库驱动进化</a>
+    <a href="#ch6" class="sidebar-link">6. 与 FDE 的交叉</a>
+    <a href="#ch6-1" class="sidebar-link sub">6.1 AI Coding 是成本革命</a>
+    <a href="#ch6-2" class="sidebar-link sub">6.2 人人都是产品经理</a>
+    <a href="#ch7" class="sidebar-link">7. 风险与诚实面对</a>
+    <a href="#appendix" class="sidebar-link">附录</a>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="main-content">
+<article class="article-body">
+
+<!-- Title -->
+<h1 id="top">AI Coding 工作流：<br>从个人工具到团队工程化</h1>
+
+<p class="subtitle">当 AI 把"写代码"的成本打到接近零，真正的瓶颈转移到了哪里？一份从产品经理视角出发的 AI Coding 深度实践报告。</p>
+
+<!-- Meta -->
+<div class="article-meta">
+  <div class="meta-author">
+    <div class="meta-avatar">K</div>
+    <div>
+      <div class="meta-name">Karaithy</div>
+      <div class="meta-role">Deep Research</div>
+    </div>
+  </div>
+  <span class="meta-dot">&middot;</span>
+  <span class="meta-date">2026 年 6 月 1 日</span>
+  <span class="meta-dot">&middot;</span>
+  <span class="meta-read-time">约 25 分钟阅读</span>
+</div>
+
+<!-- ==================== 执行摘要 ==================== -->
+<h2 id="executive-summary">执行摘要</h2>
+
+<div class="callout tip">
+  <div class="callout-title">核心发现</div>
+  <strong>AI Coding 正在从"程序员的效率工具"演变为"整个产品团队的工程化基础设施"。对于 B 端产品经理而言，这不是一个"要不要学编程"的问题，而是一个"如何重新定义自己工作方式"的范式转移。当 AI Agent 把写代码提速 10 倍后，真正的瓶颈从"怎么实现"转移到了"做什么"和"做得对不对"——而这恰好是产品经理的核心能力圈。</strong>
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-number">10x</div>
+    <div class="stat-label">PM 原型产出提速<br>从需求到可交互 Demo</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">70%</div>
+    <div class="stat-label">时间从生产转向判断<br>AI 时代 PM 的核心转变</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">100+</div>
+    <div class="stat-label">Skills 技能库规模<br>覆盖产品、工程、知识沉淀</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">60min</div>
+    <div class="stat-label">速赛限时 = 一个迭代周期<br>从题目到交付的极限压测</div>
+  </div>
+</div>
+
+<p><strong>本报告的核心内容：</strong></p>
+<ol>
+  <li><strong>范式演进</strong>：AI Coding 经历了 Prompt Engineering → Context Engineering → Harness Engineering 三个阶段。2026 年，真正的竞争力不在于"会用 AI 写代码"，而在于"构建让 AI 持续高质量工作的工程系统"。</li>
+  <li><strong>PM 视角</strong>：市面上大量"AI Coding 工具测评"，但几乎没有产品经理视角的工程化实践报告。本文基于 100+ Skills 技能库的构建经验，系统阐述 PM 如何用 AI Coding 重构工作流。</li>
+  <li><strong>团队工程化</strong>：从个人效率到组织能力，AI Coding 的真正价值在于改变团队的交付结构——而不仅仅是让个人写代码更快。</li>
+  <li><strong>实战案例</strong>：包含 60 分钟限时速赛、PM 工作流变革、知识库驱动的持续进化等第一手实践。</li>
+</ol>
+
+<!-- ==================== 第 1 章 ==================== -->
+<h2 id="ch1">1. AI Coding 五分钟入门</h2>
+
+<p>在深入技术细节之前，先建立一个清晰的认知框架。AI Coding 不是"AI 帮你补全代码"那么简单——它正在重新定义软件开发中人与机器的分工。</p>
+
+<h3 id="ch1-1">1.1 什么是 AI Coding</h3>
+
+<div class="callout info">
+  <div class="callout-title">一句话定义</div>
+  <strong>AI Coding 是以 AI Agent 作为主要代码实现者、人类负责判断和验收的软件开发模式。</strong>它不是"更聪明的自动补全"，而是一种从根本上改变了"谁写代码"这个问题的新范式。
+</div>
+
+<p>理解 AI Coding，需要区分三个层次——它们之间不是简单的升级关系，而是代表了人机协作模式的根本性变化：</p>
+
+<div class="compare-grid">
+  <div class="compare-card">
+    <h4>Level 1: Copilot（补全）</h4>
+    <p><strong>人写代码，AI 辅助。</strong></p>
+    <ul>
+      <li>代表工具：GitHub Copilot（早期版本）</li>
+      <li>核心能力：行级/块级代码补全</li>
+      <li>人的角色：主要编码者</li>
+      <li>AI 的角色：智能 Tab 键</li>
+      <li>提速效果：约 1.5-2x</li>
+    </ul>
+    <p style="color:var(--text-tertiary);font-size:0.85rem;">类比：AI 是你的"实习生"，你说一句它补一句。</p>
+  </div>
+  <div class="compare-card">
+    <h4>Level 2: Agent（自主编码）</h4>
+    <p><strong>人描述意图，AI 编码。</strong></p>
+    <ul>
+      <li>代表工具：Claude Code、Cursor Agent</li>
+      <li>核心能力：理解需求 → 规划 → 实现 → 自我修正</li>
+      <li>人的角色：需求定义者 + 验收者</li>
+      <li>AI 的角色：独立开发者</li>
+      <li>提速效果：约 5-10x</li>
+    </ul>
+    <p style="color:var(--text-tertiary);font-size:0.85rem;">类比：AI 是你的"外包团队"，你给需求它交付成品。</p>
+  </div>
+  <div class="compare-card">
+    <h4>Level 3: Harness（工程系统）</h4>
+    <p><strong>人构建系统，AI 在系统中持续交付。</strong></p>
+    <ul>
+      <li>代表形态：Claude Code + Skills + Hooks + Memory</li>
+      <li>核心能力：标准化流程 + 持续学习 + 质量保障</li>
+      <li>人的角色：系统架构师 + 质量校准者</li>
+      <li>AI 的角色：工程化的交付引擎</li>
+      <li>提速效果：10x+ 且质量可控</li>
+    </ul>
+    <p style="color:var(--text-tertiary);font-size:0.85rem;">类比：AI 是你"管理的团队"，你不是给任务，而是建制度。</p>
+  </div>
+</div>
+
+<p><strong>关键洞察：</strong>大多数人还停留在 Level 1-2 的讨论中（"哪个 AI 补全更准"、"Cursor 还是 Copilot"），而真正的竞争力差异已经发生在 Level 3——谁能构建更好的 Harness，谁的 AI Agent 就能持续产出更高质量的结果。</p>
+
+<h3 id="ch1-2">1.2 工具全景图</h3>
+
+<p>2026 年中，AI Coding 工具市场已经从"百花齐放"进入"格局初定"阶段。以下是主流工具的横向对比：</p>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr>
+      <th>工具</th>
+      <th>Agent 能力</th>
+      <th>上下文理解</th>
+      <th>MCP 支持</th>
+      <th>价格</th>
+      <th>最佳场景</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Claude Code</strong></td>
+      <td>极强，原生 Agent 架构</td>
+      <td>极强，200K 上下文窗口</td>
+      <td>原生支持，生态最丰富</td>
+      <td>$130/月（MAX）</td>
+      <td>复杂项目、全栈开发、Skill 体系构建</td>
+    </tr>
+    <tr>
+      <td><strong>Cursor</strong></td>
+      <td>强，Composer Agent 模式</td>
+      <td>强，codebase indexing</td>
+      <td>支持</td>
+      <td>$20/月（Pro）</td>
+      <td>日常开发、快速迭代、VS Code 生态</td>
+    </tr>
+    <tr>
+      <td><strong>Codex</strong></td>
+      <td>强，云端沙盒执行</td>
+      <td>中等</td>
+      <td>有限</td>
+      <td>按 token 计费</td>
+      <td>批量代码任务、CI/CD 集成</td>
+    </tr>
+    <tr>
+      <td><strong>Windsurf</strong></td>
+      <td>中等，Cascade 流程</td>
+      <td>中等</td>
+      <td>有限</td>
+      <td>$10/月起</td>
+      <td>轻量开发、新手友好</td>
+    </tr>
+    <tr>
+      <td><strong>GitHub Copilot</strong></td>
+      <td>中等，Agent 模式新增</td>
+      <td>中等</td>
+      <td>有限</td>
+      <td>$19/月（Pro）</td>
+      <td>GitHub 生态深度集成、企业合规</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout warn">
+  <div class="callout-title">选型建议</div>
+  <p>工具选择不是"谁最强"的问题，而是"谁最适合你的工作流"。如果你需要构建 Harness 级别的工程化体系（Skills、Hooks、Memory），<strong>Claude Code 目前是唯一成熟的选择</strong>。如果你只需要日常 IDE 内的高效编码，Cursor 是性价比最高的方案。两者可以并行使用，通过 symlink 共享 Skills 配置。</p>
+</div>
+
+<h3 id="ch1-3">1.3 为什么 2026 年是拐点</h3>
+
+<p>AI Coding 工具从 2022 年就出现了，但 2026 年是从"能用"到"能上生产"的质变之年。三个关键因素同时成熟：</p>
+
+<div class="stat-grid">
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.5rem;">🧠</div>
+    <div class="stat-label" style="font-size:0.95rem;line-height:1.6;"><strong>模型能力跃升</strong><br>Claude Opus 4.6 / Sonnet 4.5 / GPT-5 等模型在代码理解、长上下文推理、多步规划方面达到了 <strong>"初级-中级工程师"水平</strong>。不再是"写个函数还行，项目级不敢用"。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.5rem;">🔌</div>
+    <div class="stat-label" style="font-size:0.95rem;line-height:1.6;"><strong>MCP 协议让工具连接一切</strong><br>Model Context Protocol 成为 AI 工具连接外部系统的标准协议。Agent 不再局限于"读写代码"，而是可以 <strong>操作数据库、调用 API、管理项目、读取文档</strong>——真正成为一个全栈工作单元。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.5rem;">🏗️</div>
+    <div class="stat-label" style="font-size:0.95rem;line-height:1.6;"><strong>Harness 工程化成熟</strong><br>Skills、Hooks、CLAUDE.md、Memory 等机制让 Agent 的行为从"随机"变为"可控可复现"。<strong>从碎石路到柏油路</strong>——不是跑得更快，而是每次都能跑出一样的路线。</div>
+  </div>
+</div>
+
+<p>这三个因素的叠加效应意味着：<strong>AI Coding 不再是"程序员的玩具"，而是任何需要产出数字化交付物的角色都应该认真考虑的工作方式</strong>——尤其是产品经理。</p>
+
+<!-- ==================== 第 2 章 ==================== -->
+<h2 id="ch2">2. 范式转移：从 Prompt 到 Harness</h2>
+
+<p>如果说第 1 章回答了"AI Coding 是什么"，这一章要回答一个更深层的问题：<strong>AI Coding 的核心竞争力到底在哪里？</strong>答案不是"用什么模型"，也不是"写什么 Prompt"——而是 Harness。</p>
+
+<h3 id="ch2-1">2.1 三个阶段的演进</h3>
+
+<p>AI 工程实践经历了三个清晰的阶段，每个阶段解决的核心问题完全不同：</p>
+
+<div class="flow-vertical">
+  <div class="flow-step">
+    <h4>2023: Prompt Engineering</h4>
+    <p><strong>核心问题：怎么跟 AI 说话？</strong></p>
+    <p>这个阶段大家研究 Chain-of-Thought、Few-shot、角色设定等技巧。本质是在解决<strong>单次对话的质量问题</strong>。局限性：每次对话都从零开始，结果不可复现，高度依赖个人经验。</p>
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <h4>2024-2025: Context Engineering</h4>
+    <p><strong>核心问题：怎么给 AI 足够的背景信息？</strong></p>
+    <p>人们开始意识到，Prompt 的天花板是上下文。RAG、向量数据库、代码索引等技术让 AI 能"看到"更多信息。CLAUDE.md 的出现让项目级上下文可以持久化。本质是<strong>把"说话技巧"升级为"信息架构"</strong>。</p>
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <h4>2026: Harness Engineering</h4>
+    <p><strong>核心问题：怎么让 AI 在一个受控系统中持续、稳定地交付？</strong></p>
+    <p>不再是"给 AI 更多信息"，而是<strong>构建一个让 Agent 行为可控、可复现、可迭代的工程系统</strong>。Skills、Hooks、Memory、Guardrails 组成的 Harness 就是这个系统。类比：从"教一个人做事"到"建一条生产线"。</p>
+  </div>
+</div>
+
+<div class="callout critical">
+  <div class="callout-title">范式转移的核心</div>
+  <strong>Prompt 是临时的，Context 是持久的，Harness 是系统性的。</strong>2026 年的竞争力差距不在于谁的 Prompt 写得好，而在于谁的 Harness 建得深。就像软件工程的竞争力不在于谁写代码快，而在于谁的工程系统更成熟。
+</div>
+
+<h3 id="ch2-2">2.2 什么是 Harness</h3>
+
+<p>Anthropic 在 Claude Code 的设计中提出了一个简洁的公式：</p>
+
+<blockquote>
+  <strong>Agent = Model + Harness</strong><br>
+  Model 提供智能，Harness 提供结构。没有 Harness 的 Agent 就像没有工厂的工程师——有能力但没有持续交付的系统。
+</blockquote>
+
+<p>Harness 由六个核心组件构成：</p>
+
+<div class="stat-grid">
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.3rem;">🔄 Agentic Loop</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">Agent 的核心运行循环：感知 → 思考 → 行动 → 观察。决定了 Agent 如何拆解任务、何时使用工具、如何处理错误。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.3rem;">🔧 Tool System</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">Agent 可以调用的工具集合。通过 MCP 协议，Agent 可以连接文件系统、数据库、API、浏览器等一切外部系统。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.3rem;">🧠 Memory & Context</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">CLAUDE.md 提供项目级持久记忆，Session 提供会话级短期记忆。让 Agent 不再每次从零开始。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.3rem;">🛡️ Guardrails</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">安全围栏：权限控制、操作白名单、危险操作拦截。确保 Agent 不会"聪明过头"做出破坏性操作。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.3rem;">🪝 Hooks</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">生命周期钩子：在 Agent 操作的关键节点（提交前、工具调用前、会话结束时）插入自定义逻辑。实现"自动化的规范执行"。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.3rem;">💾 Session</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">会话管理：上下文压缩、多会话并行、会话恢复。解决长任务中的上下文窗口限制问题。</div>
+  </div>
+</div>
+
+<div class="compare-grid">
+  <div class="compare-card">
+    <h4>AI-Assisted（给旧流程加 AI）</h4>
+    <ul>
+      <li>在 IDE 里加个补全插件</li>
+      <li>用 ChatGPT 问问代码问题</li>
+      <li>让 AI 生成单元测试</li>
+      <li>工作流程不变，AI 是"外挂"</li>
+    </ul>
+    <p style="color:var(--text-tertiary);font-size:0.85rem;margin-top:12px;">典型心态："AI 帮我快一点"</p>
+  </div>
+  <div class="compare-card">
+    <h4>AI-First（围绕 Agent 重构系统）</h4>
+    <ul>
+      <li>用 CLAUDE.md 定义项目规范，Agent 自动遵守</li>
+      <li>用 Skills 封装可复用的工作流程</li>
+      <li>用 Hooks 实现自动化质量检查</li>
+      <li>工作流程围绕 Agent 重新设计</li>
+    </ul>
+    <p style="color:var(--text-tertiary);font-size:0.85rem;margin-top:12px;">典型心态："我的系统让 AI 持续产出高质量结果"</p>
+  </div>
+</div>
+
+<p>Peter Pang（AI 工程实践领域的知名声音）指出：<strong>真正的 AI-First 不是给旧流程加 AI，而是围绕 Agent 重构整个工程系统。</strong>这个判断在 2026 年已经被大量实践验证。</p>
+
+<h3 id="ch2-3">2.3 Skills 体系：Harness 的实践形态</h3>
+
+<p>如果 Harness 是理论框架，Skills 就是它的实践载体。</p>
+
+<div class="callout info">
+  <div class="callout-title">什么是 Skill</div>
+  <p><strong>一个 Skill = 一个目录</strong>，包含：</p>
+  <ul>
+    <li><strong>SKILL.md</strong>：上下文定义（这个 Skill 做什么、在什么场景下触发）</li>
+    <li><strong>规则集</strong>：Agent 在执行时必须遵守的约束条件</li>
+    <li><strong>模板</strong>：输出的标准化格式</li>
+    <li><strong>示例</strong>：好的输出长什么样（Few-shot learning 的结构化版本）</li>
+  </ul>
+  <p>本质上，Skill 把"我怎么教 AI 做一件事"从"每次重复说一遍"变成了"定义一次，永久复用"。</p>
+</div>
+
+<p>一个真实的 100+ Skills 技能库，大致可以分为以下几个层次：</p>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr>
+      <th>类别</th>
+      <th>数量</th>
+      <th>代表 Skill</th>
+      <th>用途</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>工程交付</strong></td>
+      <td>~30</td>
+      <td>frontend-slides, test-driven-development, code-review</td>
+      <td>代码生成、测试、审查、部署的标准化流程</td>
+    </tr>
+    <tr>
+      <td><strong>产品设计</strong></td>
+      <td>~20</td>
+      <td>spec, ui-ux-pro-max, design-review</td>
+      <td>PRD 撰写、UI 设计、设计评审</td>
+    </tr>
+    <tr>
+      <td><strong>知识管理</strong></td>
+      <td>~15</td>
+      <td>deep-research, learn, secondbrain</td>
+      <td>研究报告、学习笔记、知识库维护</td>
+    </tr>
+    <tr>
+      <td><strong>沟通协作</strong></td>
+      <td>~15</td>
+      <td>meeting-transcribe, context-save/restore, changelog</td>
+      <td>会议记录、上下文切换、变更日志</td>
+    </tr>
+    <tr>
+      <td><strong>流程自动化</strong></td>
+      <td>~10</td>
+      <td>ship, qa, land-and-deploy</td>
+      <td>发布、质量保障、部署的自动化</td>
+    </tr>
+    <tr>
+      <td><strong>元能力</strong></td>
+      <td>~10</td>
+      <td>skillify, writing-skills, autoplan</td>
+      <td>"制造 Skill 的 Skill"——让技能库自我进化</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout tip">
+  <div class="callout-title">核心理念：Thin Harness, Fat Skills</div>
+  <p><strong>Harness 层保持轻薄和通用</strong>（Claude Code 本身提供的 CLAUDE.md、Hooks、权限等机制），<strong>Skills 层承载领域知识和业务逻辑</strong>。这种分层类似于操作系统（Harness）和应用程序（Skills）的关系——操作系统不需要知道你的业务是什么，但它提供了让所有应用程序稳定运行的基础设施。</p>
+</div>
+
+<!-- ==================== 第 3 章 ==================== -->
+<h2 id="ch3">3. 产品经理用 AI Coding 做什么</h2>
+
+<p>这是本文最核心的章节。市面上大量 AI Coding 内容都在讨论"程序员怎么用 AI 写代码"，但<strong>几乎没有人系统讨论过：一个不以编码为主业的产品经理，怎么用 AI Coding 彻底改变自己的工作方式。</strong></p>
+
+<h3 id="ch3-1">3.1 Evals 取代 PRD</h3>
+
+<p>这可能是 AI 时代对产品经理影响最深远的变化：<strong>传统 PRD（产品需求文档）的有效性正在急剧下降。</strong></p>
+
+<div class="compare-grid">
+  <div class="compare-card">
+    <h4>传统 PRD</h4>
+    <ul>
+      <li>定义"做什么"和"怎么做"</li>
+      <li>假设输出是确定性的</li>
+      <li>写一次，开发遵照执行</li>
+      <li>验收标准：功能是否实现</li>
+      <li>产出周期：1-2 周</li>
+    </ul>
+    <p style="color:var(--text-tertiary);font-size:0.85rem;margin-top:12px;">适用于：传统软件开发</p>
+  </div>
+  <div class="compare-card">
+    <h4>Eval（评估体系）</h4>
+    <ul>
+      <li>定义"什么是好的输出"</li>
+      <li>承认输出是非确定性的</li>
+      <li>持续迭代，根据结果调整</li>
+      <li>验收标准：输出质量分布</li>
+      <li>产出周期：几小时内可迭代</li>
+    </ul>
+    <p style="color:var(--text-tertiary);font-size:0.85rem;margin-top:12px;">适用于：AI 驱动的产品开发</p>
+  </div>
+</div>
+
+<p><strong>为什么 PRD 在 AI 时代失效？</strong>因为 AI 的输出是非确定性的——同样的 Prompt 可能产生不同的结果。传统 PRD 假设"按需求做就能得到正确的产品"，但 AI 产品需要的是"定义什么是好的，然后不断校准"。</p>
+
+<blockquote>
+  <strong>"Writing evals is the most important thing a PM can do in the AI era."</strong><br>
+  — OpenAI CPO
+</blockquote>
+
+<p>Eval 的三个核心要素：</p>
+
+<div class="stat-grid">
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.3rem;">📊 Data</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">代表性的测试用例集合。不是随手编几个例子，而是覆盖正常场景、边缘场景、对抗场景的系统化数据集。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.3rem;">📋 Task</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">明确定义的任务描述。要具体到 AI 可以独立执行，但不要具体到限制了实现方式。关键是定义"做什么"而不是"怎么做"。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.3rem;">⭐ Scores</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">可量化的评分标准。可以是自动化的（通过规则或另一个 AI 评分），也可以是人工的。关键是<strong>标准一致、可重复</strong>。</div>
+  </div>
+</div>
+
+<div class="callout tip">
+  <div class="callout-title">PM 的新技能</div>
+  <strong>Prompt 是临时的，Eval 是永久的。</strong>一个好的 Eval 体系能让不同的 AI 模型、不同的 Prompt 策略都在同一个标准下被比较和优化。这比写一份完美的 PRD 有价值得多——因为 PRD 只能用一次，而 Eval 可以持续使用和迭代。
+</div>
+
+<h3 id="ch3-2">3.2 Demo-first 开发</h3>
+
+<p>当 AI 把"从需求到可运行代码"的时间从数周压缩到数十分钟，一个全新的开发范式出现了：<strong>先做 Demo，再谈需求</strong>。</p>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-label">传统模式（数周-数月）</div>
+    <div class="timeline-title">PRD → 评审 → 排期 → 开发 → 测试 → 交付</div>
+    <div class="timeline-desc">产品经理花 1-2 周写 PRD，开评审会讨论可行性，排入开发迭代（可能等 1-2 个 Sprint），开发团队实现，QA 测试，最终交付——客户看到产品时可能已经过了 2-3 个月。如果方向错了，这些时间全部浪费。</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-label">Demo-first（数小时-数天）</div>
+    <div class="timeline-title">需求 → 30 分钟 Demo → 客户验证 → 迭代</div>
+    <div class="timeline-desc">产品经理收到需求后，直接用 AI Coding 在 30 分钟内做出一个可交互的 Demo。拿给客户看："是这个方向吗？"客户说"差不多，但这里应该改一下"——当天就能改好再看。<strong>验证成本从"数月工程投入"降到"一个下午的时间"。</strong></div>
+  </div>
+</div>
+
+<p><strong>Demo-first 的核心价值不是"快"，而是"便宜地试错"。</strong>传统模式下试错成本极高（需要占用开发资源），所以产品经理倾向于"想清楚再做"——但问题是，很多需求不做出来根本想不清楚。Demo-first 让"做出来看看"的成本接近零，从而让产品探索变成了一个低成本、高频率的迭代过程。</p>
+
+<h3 id="ch3-3">3.3 从"生产者"到"判断者"</h3>
+
+<p>这是 AI 时代产品经理角色变化中最深刻的一个维度：</p>
+
+<div class="compare-grid">
+  <div class="compare-card">
+    <h4>传统 PM 的时间分配</h4>
+    <ul>
+      <li><strong>70% 生产</strong>：写 PRD、画原型、做竞品分析、整理数据</li>
+      <li><strong>30% 判断</strong>：优先级排序、方案取舍、stakeholder 对齐</li>
+    </ul>
+    <p style="color:var(--text-tertiary);font-size:0.85rem;margin-top:12px;">大量时间花在"把想法变成文档"上</p>
+  </div>
+  <div class="compare-card">
+    <h4>AI 时代 PM 的时间分配</h4>
+    <ul>
+      <li><strong>30% 生产</strong>：定义 Eval 标准、构建 Skills、维护知识库</li>
+      <li><strong>70% 判断</strong>：校准 AI 输出、验证业务假设、优先级决策</li>
+    </ul>
+    <p style="color:var(--text-tertiary);font-size:0.85rem;margin-top:12px;">大量时间花在"判断 AI 做得对不对"上</p>
+  </div>
+</div>
+
+<div class="callout critical">
+  <div class="callout-title">稀缺性假设终结</div>
+  <p>传统产品方法论（双钻模型、JTBD、设计思维等）有一个隐含的前提假设：<strong>信息获取和方案生成的成本很高</strong>。所以我们需要一套系统化的方法论来确保"在有限的资源下做出最好的决策"。</p>
+  <p>AI 打穿了这个假设。当信息获取（Deep Research）和方案生成（AI Coding）的成本接近零时，<strong>PM 的核心价值从"高效地生产方案"转向"准确地判断方案"</strong>。方法论不会消失，但其功能从"指导生产"变为"校准判断"。</p>
+</div>
+
+<p>新时代 PM 的三项核心能力：</p>
+
+<div class="stat-grid">
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.3rem;">🎯 判断力</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">AI 可以在 10 分钟内给你 5 个方案，但选哪个、为什么选——这是判断力。它来自对业务的深度理解、对用户的持续观察、对技术可行性的准确评估。<strong>AI 越强，判断力的价值越高。</strong></div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.3rem;">⚖️ 取舍力</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">当"做"的成本降到接近零，"不做什么"比"做什么"更重要。AI 可以帮你做一切，但<strong>做一切并不等于做对了</strong>。取舍力是在无限可能中找到有限重点的能力。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.3rem;">🚀 推动力</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">AI 可以帮你做 Demo、写文档、跑分析，但不能帮你推动组织变革、协调 stakeholder、说服客户接受新方案。<strong>人际影响力在 AI 时代不降反升。</strong></div>
+  </div>
+</div>
+
+<!-- ==================== 第 4 章 ==================== -->
+<h2 id="ch4">4. 团队工程化：从个人到组织</h2>
+
+<p>前三章聚焦个人视角：AI Coding 是什么、怎么用、改变了什么。这一章要讨论一个更难的问题：<strong>怎么从"一个人用得很爽"到"整个团队都能受益"？</strong></p>
+
+<h3 id="ch4-1">4.1 个人效率 ≠ 团队效率</h3>
+
+<p>一个人用 AI Coding 快 10 倍，但团队用不起来——这是 2026 年最普遍的困境。原因不是工具不好，而是组织层面存在 5 个结构性障碍：</p>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>障碍</th>
+      <th>表现</th>
+      <th>根因</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><strong>技能断层</strong></td>
+      <td>团队中只有 1-2 人会用，其他人觉得"太难了"</td>
+      <td>缺乏渐进式的上手路径</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>知识孤岛</strong></td>
+      <td>每个人的 Prompt、技巧、配置都在自己脑子里</td>
+      <td>没有 Skills 这样的知识沉淀机制</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>质量焦虑</strong></td>
+      <td>管理者担心"AI 写的代码能上生产吗？"</td>
+      <td>缺乏可度量的质量保障流程</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>流程冲突</strong></td>
+      <td>AI Coding 的速度跟现有评审、排期流程不兼容</td>
+      <td>旧流程假设"开发是瓶颈"，但瓶颈已转移</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><strong>激励失调</strong></td>
+      <td>"我花时间研究 AI，绩效上看不出来"</td>
+      <td>绩效体系没有跟上工具变革</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="ch4-2">4.2 工程化的四个层次</h3>
+
+<p>团队 AI Coding 的成熟度可以分为四个阶段，每个阶段有不同的特征和关键任务：</p>
+
+<div class="stat-grid">
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.1rem;">L1: 个人探索</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">
+      <strong>特征</strong>：1-2 人自发使用，没有团队规范<br>
+      <strong>产出</strong>：个人效率提升，但不可复制<br>
+      <strong>关键任务</strong>：找到 1-2 个"灯塔用户"，让他们自由探索
+    </div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.1rem;">L2: 团队试点</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">
+      <strong>特征</strong>：小组内分享经验，开始建 Skills<br>
+      <strong>产出</strong>：可复用的 Skills 和最佳实践<br>
+      <strong>关键任务</strong>：选一个低风险项目做试点，产出团队共享的 Skills
+    </div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.1rem;">L3: 流程嵌入</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">
+      <strong>特征</strong>：AI Coding 成为正式工作流的一部分<br>
+      <strong>产出</strong>：标准化的工作流程 + 质量保障机制<br>
+      <strong>关键任务</strong>：改造评审和交付流程，适配 AI Coding 的速度
+    </div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.1rem;">L4: 组织能力</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">
+      <strong>特征</strong>：AI Coding 是组织的核心竞争力之一<br>
+      <strong>产出</strong>：跨团队的 Skills 库 + 知识库 + 培训体系<br>
+      <strong>关键任务</strong>：建立 AI Coding 的知识管理和人才培养体系
+    </div>
+  </div>
+</div>
+
+<div class="callout warn">
+  <div class="callout-title">常见错误</div>
+  <p>大多数团队试图从 L1 直接跳到 L3（"我们制定一个规范，要求大家都用 AI Coding"），结果发现推不动。<strong>正确路径是 L1 → L2 → L3 → L4，每个阶段需要 2-3 个月的自然演进。</strong>L2 阶段的 Skills 共享是关键转折点——它把个人经验变成了团队资产。</p>
+</div>
+
+<h3 id="ch4-3">4.3 AI Coding 的组织基础设施</h3>
+
+<p>要让 AI Coding 从个人能力升级为组织能力，需要三个基础设施：</p>
+
+<div class="flow-vertical">
+  <div class="flow-step">
+    <h4>基础设施 1: Skills 统一管理</h4>
+    <p>通过 <strong>symlink（符号链接）</strong>实现 Skills 在不同 IDE 和工具之间的共享。一套 Skills 同时在 Claude Code 和 Cursor 中生效，避免重复维护。团队成员通过 Git 仓库共享和同步 Skills，像管理代码一样管理工作流。</p>
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <h4>基础设施 2: 知识库自动化</h4>
+    <p>构建一条完整的知识流水线：<strong>飞书 CLI 结构化提取沟通信息 → Agent 处理和归纳 → 写入 Obsidian 知识库 → 反向更新 Skills</strong>。这条流水线确保团队的经验教训不会丢失在聊天记录里，而是被系统化地沉淀和复用。</p>
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <h4>基础设施 3: 质量保障前置</h4>
+    <p>把验收标准从"事后检查"前移到"事前定义"。<strong>在 CLAUDE.md 和 Skills 中定义好质量标准</strong>，Agent 在执行过程中就自动遵守。不是做完再审，而是做的过程中就在审。这与 Eval 思维一脉相承。</p>
+  </div>
+</div>
+
+<!-- ==================== 第 5 章 ==================== -->
+<h2 id="ch5">5. 实战案例</h2>
+
+<p>理论说得再好，不如看实际怎么用。这一章分享三个真实案例，分别对应 AI Coding 的不同应用场景。</p>
+
+<h3 id="ch5-1">5.1 60 分钟速赛：AI Coding 的极限压测</h3>
+
+<p>某 B 端科技企业每周四举办内部 AI Coding 速赛——60 分钟限时开发 + 3 分钟演示。这个赛制本身就是一个精心设计的 AI Coding 训练场。</p>
+
+<div class="callout info">
+  <div class="callout-title">赛制规则</div>
+  <ul>
+    <li><strong>时间</strong>：60 分钟开发 + 3 分钟演示</li>
+    <li><strong>评判标准</strong>：演示效果 > 代码质量（你做出来了什么比怎么做的重要）</li>
+    <li><strong>工具不限</strong>：Claude Code、Cursor、Codex 随便用</li>
+    <li><strong>不计较代码整洁</strong>：速赛不是代码审查</li>
+  </ul>
+</div>
+
+<p><strong>10 条硬门（赛中约束）：</strong></p>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>约束</th>
+      <th>为什么</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>不许 brainstorm</td>
+      <td>60 分钟没时间发散，必须快速锁定方向</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>不许写测试</td>
+      <td>时间全部用来做可演示的功能</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>不许大重构</td>
+      <td>在现有基础上增量构建，不要推倒重来</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>演示效果 > 代码质量</td>
+      <td>训练"交付导向"思维</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>前 5 分钟必须确定技术方案</td>
+      <td>避免在技术选型上浪费时间</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>每 15 分钟必须有可运行的版本</td>
+      <td>增量交付，避免"最后一刻才发现跑不起来"</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>不许手动安装依赖超过 3 分钟</td>
+      <td>环境问题不应该吃掉开发时间</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>最终演示必须从零启动</td>
+      <td>证明产出是可独立运行的</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>允许复用自己的 Skills 和模板</td>
+      <td>鼓励日常积累，Skills 就是竞争优势</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>不允许提前准备代码</td>
+      <td>Skills 和模板可以提前准备，但代码不行</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout tip">
+  <div class="callout-title">为什么"不许写测试"反而提高了交付质量</div>
+  <p>这条反直觉的规则背后有一个深刻的洞察：<strong>在 60 分钟的极限约束下，测试的 ROI 极低</strong>。写测试的时间足够多做一个核心功能。但更重要的是，这条规则训练了一种"结果导向"的思维——不是"代码是否正确"，而是"用户看到的是否有价值"。</p>
+  <p>当然，这不意味着日常开发不需要测试。速赛的极端环境恰恰揭示了一个普适原理：<strong>在资源极度有限时，优先保障"可见价值"比"内部质量"更重要。</strong>日常工作中，这个原理同样适用于 MVP 阶段和概念验证。</p>
+</div>
+
+<p><strong>一个典型的速赛流程：</strong></p>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-label">0-5 分钟</div>
+    <div class="timeline-title">题目理解 + 技术选型</div>
+    <div class="timeline-desc">读题，快速确定"做什么"和"用什么做"。这 5 分钟的质量决定了后面 55 分钟的效率。用 AI 快速分析题目要求，确认技术可行性。</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-label">5-20 分钟</div>
+    <div class="timeline-title">核心骨架搭建</div>
+    <div class="timeline-desc">用 AI Agent 生成项目骨架和核心功能。这个阶段的关键是"不要追求完美"——先让东西跑起来，哪怕 UI 很丑、功能很粗糙。</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-label">20-45 分钟</div>
+    <div class="timeline-title">功能迭代 + 体验打磨</div>
+    <div class="timeline-desc">在骨架上增量添加功能。每 15 分钟检查一次"当前版本能不能演示"。如果某个功能卡住了超过 5 分钟，果断放弃，做下一个。</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-label">45-55 分钟</div>
+    <div class="timeline-title">演示准备 + 收尾</div>
+    <div class="timeline-desc">停止开发新功能。专注于：确保能从零启动、准备演示脚本、修复最明显的 bug。宁可少一个功能，也要确保演示流畅。</div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-label">55-60 分钟</div>
+    <div class="timeline-title">最终检查</div>
+    <div class="timeline-desc">完整走一遍演示流程。如果发现问题，只修致命 bug，不做任何优化。</div>
+  </div>
+</div>
+
+<h3 id="ch5-2">5.2 产品经理的工作流变革</h3>
+
+<p>以下是一个真实的 PM 工作流对比——从传统模式到 AI-augmented 模式的转变：</p>
+
+<div class="flow-vertical">
+  <div class="flow-step">
+    <h4>输入端：结构化信息采集</h4>
+    <p>传统 PM 的信息来源是"开会 + 看文档 + 聊天记录翻找"，效率极低。AI-augmented PM 使用<strong>飞书 CLI 结构化提取沟通信息</strong>——自动拉取群消息、按时间筛选、提取关键决策点。投标文件、客户需求邮件等也通过 Agent 自动解析和归纳。</p>
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <h4>处理层：Agent 驱动的工作流</h4>
+    <p>信息进入 Agent 后，通过不同的 Skills 自动路由到对应的处理流程。一个需求输入可能同时触发：竞品分析 Skill、技术可行性评估 Skill、Demo 原型生成 Skill。<strong>并行处理替代了串行等待。</strong></p>
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <h4>输出端：四类标准化产出</h4>
+    <p>Agent 的输出被标准化为四类：</p>
+    <ul>
+      <li><strong>文档</strong>：PRD / 分析报告 / 会议纪要</li>
+      <li><strong>可交互 Demo</strong>：HTML 原型 / 可运行的 MVP</li>
+      <li><strong>验收标准</strong>：Eval 数据集 + 评分规则</li>
+      <li><strong>开发 PRD</strong>：面向工程团队的精确技术文档</li>
+    </ul>
+  </div>
+</div>
+
+<div class="compare-grid">
+  <div class="compare-card">
+    <h4>传统 PM 一周产出</h4>
+    <ul>
+      <li>1 份 PRD（2-3 天）</li>
+      <li>1 份竞品分析（1-2 天）</li>
+      <li>若干会议纪要（碎片时间）</li>
+      <li>原型图若干页（Axure/Figma）</li>
+    </ul>
+    <p style="color:var(--text-tertiary);font-size:0.85rem;margin-top:12px;">总工时：40-50 小时</p>
+  </div>
+  <div class="compare-card">
+    <h4>AI-augmented PM 一天产出</h4>
+    <ul>
+      <li>1 份 PRD + Eval 体系（2 小时）</li>
+      <li>1 个可交互 Demo（1 小时）</li>
+      <li>自动化的会议纪要（实时）</li>
+      <li>竞品分析 + 技术可行性（1 小时）</li>
+    </ul>
+    <p style="color:var(--text-tertiary);font-size:0.85rem;margin-top:12px;">总工时：6-8 小时（剩余时间用于判断和沟通）</p>
+  </div>
+</div>
+
+<h3 id="ch5-3">5.3 知识库驱动的持续进化</h3>
+
+<p>AI Coding 的真正威力不在于"一次做得快"，而在于<strong>每次做都比上次更好</strong>。这靠的是一个持续进化的循环：</p>
+
+<div class="flow-vertical">
+  <div class="flow-step">
+    <h4>Step 1: 实践</h4>
+    <p>用 AI Agent 完成一个具体任务（写一份 PRD、做一个 Demo、交付一个功能）。</p>
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <h4>Step 2: 提取 Lessons</h4>
+    <p>任务结束后，复盘哪些地方 Agent 做得好、哪些地方需要额外引导、哪些 Prompt 特别有效。这些就是 Lessons。</p>
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <h4>Step 3: 反向更新 Skill</h4>
+    <p>把 Lessons 固化到对应的 Skill 中——修改规则、添加示例、调整模板。<strong>下次再做同类任务时，Agent 的起点更高。</strong></p>
+  </div>
+  <div class="flow-arrow">↓</div>
+  <div class="flow-step">
+    <h4>Step 4: 知识库沉淀</h4>
+    <p>跨 Skill 的经验教训写入知识库（Obsidian），形成可检索的经验资产。这不是"写文档"，而是<strong>让未来的 Agent 会话能访问过去的经验</strong>。</p>
+  </div>
+  <div class="flow-arrow">🔄 循环</div>
+</div>
+
+<div class="callout tip">
+  <div class="callout-title">碎石路到柏油路</div>
+  <p>这个循环就是个人层面的"碎石路到柏油路"。一开始，每个任务都是"碎石路"——Agent 需要大量引导，产出质量不稳定。但每次实践后的 Skill 更新，都相当于<strong>铺了一段柏油</strong>。100 次实践之后，你的 Skills 体系就是一条平整的高速公路——Agent 在上面跑得又快又稳。</p>
+</div>
+
+<!-- ==================== 第 6 章 ==================== -->
+<h2 id="ch6">6. 与 FDE 的交叉</h2>
+
+<p>如果你读过本站的 <a href="../fde-deep-dive/index.html">FDE 深度调研</a>，会发现 AI Coding 和 FDE 之间存在深刻的互补关系。这一章做一个简要的交叉分析。</p>
+
+<h3 id="ch6-1">6.1 AI Coding 是 FDE 模式的成本革命</h3>
+
+<p>FDE 模式最大的落地障碍是什么？<strong>成本。</strong></p>
+
+<p>传统 FDE 需要的是"全栈高手"——既懂业务、又能写生产级代码、还要有客户沟通能力。这种人才极度稀缺，年薪通常在 30-60 万以上（国内）或 $150K-$250K（硅谷）。对于中等规模的 B 端企业来说，养一个 FDE 团队的成本是难以承受的。</p>
+
+<div class="compare-grid">
+  <div class="compare-card">
+    <h4>传统 FDE 的人才模型</h4>
+    <ul>
+      <li>需要：高级全栈工程师</li>
+      <li>技术能力：独立交付生产级代码</li>
+      <li>业务能力：深度理解客户业务</li>
+      <li>人才获取：极难招聘</li>
+      <li>年成本：30-60 万 / 人</li>
+    </ul>
+  </div>
+  <div class="compare-card">
+    <h4>AI 时代 FDE 的人才模型</h4>
+    <ul>
+      <li>需要：中级工程师 + AI Coding</li>
+      <li>技术能力：AI Agent 完成编码，人负责验收</li>
+      <li>业务能力：同样需要深度理解客户业务</li>
+      <li>人才获取：门槛显著降低</li>
+      <li>年成本：15-30 万 / 人</li>
+    </ul>
+  </div>
+</div>
+
+<p><strong>关键洞察：</strong>AI Coding 不能替代 FDE 的业务理解力和客户沟通能力，但它<strong>显著降低了 FDE 的技术门槛</strong>。一个中级工程师 + 成熟的 AI Coding 工具，在代码产出能力上可以接近高级全栈工程师的水平。这使得中等规模企业也能以可接受的成本启动 FDE 实践。</p>
+
+<h3 id="ch6-2">6.2 "人人都是产品经理"的组织含义</h3>
+
+<p>吴恩达（Andrew Ng）在最近的分享中提出了一个重要判断：</p>
+
+<blockquote>
+  <strong>当 coding agent 把写代码提速 10 倍后，瓶颈转移到"决定做什么"。最快的团队让工程师自己理解用户、判断优先级、直接实现。</strong>
+</blockquote>
+
+<p>这个判断与 FDE 的 <strong>Echo-Delta 结构</strong>（详见 <a href="../fde-deep-dive/index.html">FDE 调研</a>）有深刻的共鸣：</p>
+
+<div class="stat-grid">
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.3rem;">🔊 Echo（倾听者）</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">在客户现场，理解业务问题，<strong>决定做什么</strong>。这是瓶颈所在——AI 帮不了你理解一个特定客户的特定业务挑战。</div>
+  </div>
+  <div class="stat-card" style="text-align:left;padding:20px;">
+    <div class="stat-number" style="font-size:1.3rem;">🔨 Delta（改变者）</div>
+    <div class="stat-label" style="font-size:0.9rem;line-height:1.6;">快速把理解转化为可运行的解决方案。AI Coding 让这个环节的速度提升了一个数量级——<strong>"决定做什么"之后，"做出来"不再是瓶颈</strong>。</div>
+  </div>
+</div>
+
+<p>当"做出来"不再是瓶颈，组织中的瓶颈就转移到了"谁最懂用户"和"谁能做出正确的取舍"。这恰好是产品经理的核心能力——但<strong>不一定只有产品经理才能具备这些能力</strong>。FDE 模式 + AI Coding 的组合，让工程师也能承担传统意义上 PM 的部分职责。</p>
+
+<div class="callout info">
+  <div class="callout-title">组织启示</div>
+  <p>这不是说"产品经理要失业了"。相反，PM 的角色从"需求传递者"升级为"判断力校准者"——<strong>不是告诉工程师做什么，而是帮助整个团队建立判断什么该做的能力</strong>。这与 FDE 模式中"对业务结果负责"的理念完全一致。</p>
+</div>
+
+<!-- ==================== 第 7 章 ==================== -->
+<h2 id="ch7">7. 风险与诚实面对</h2>
+
+<p>任何技术都有其局限和风险。AI Coding 也不例外。诚实面对这些问题，比盲目乐观更有价值。</p>
+
+<div class="accordion" id="riskAccordion">
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <strong>风险 1：代码质量——AI 写的代码能上生产吗？</strong>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-content">
+      <p><strong>现状：</strong>2026 年的 AI 模型在"写正确的代码"方面已经相当可靠，但在"写好的代码"方面仍有差距。AI 生成的代码常见问题包括：过度冗长、缺乏抽象、命名不够语义化、异常处理过于防御性。</p>
+      <p><strong>应对策略：</strong></p>
+      <ul>
+        <li><strong>Harness 规范</strong>：通过 CLAUDE.md 和 Skills 定义代码规范（如 Karpathy Guidelines），Agent 会自动遵守。比人类工程师的规范执行更一致。</li>
+        <li><strong>Code Review 前置</strong>：用 AI 审查 AI 生成的代码（/code-review Skill），再由人类做最终审查。双重过滤显著提升质量。</li>
+        <li><strong>渐进式信任</strong>：从非核心模块开始使用，逐步扩展到核心代码。建立团队对 AI 代码质量的直觉。</li>
+      </ul>
+      <p><strong>结论：</strong>AI 代码的质量"可控但需要机制"。裸跑不行，但加上 Harness 后，质量可以达到"资深初级工程师"水平——对大多数场景已经够用。</p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <strong>风险 2：安全性——AI 会引入漏洞吗？</strong>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-content">
+      <p><strong>现状：</strong>AI 确实可能生成存在安全隐患的代码——SQL 注入、XSS、硬编码密钥等。但研究表明，AI 生成代码的安全漏洞率并不比初级人类工程师高。</p>
+      <p><strong>应对策略：</strong></p>
+      <ul>
+        <li><strong>安全 Skills</strong>：在 Harness 中嵌入安全检查规则（/security-review），每次代码生成后自动运行。</li>
+        <li><strong>Guardrails</strong>：配置 Agent 权限白名单，禁止执行危险操作（如删除数据库、修改系统配置）。</li>
+        <li><strong>CI/CD 集成</strong>：在部署流水线中集成自动化安全扫描，作为最后一道防线。</li>
+      </ul>
+      <p><strong>结论：</strong>安全风险真实存在，但可以通过工程化手段控制到可接受水平。关键是<strong>不要假设 AI 生成的代码天然安全</strong>，而是建立与人工代码同等严格的安全审查流程。</p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <strong>风险 3：依赖风险——模型升级可能破坏现有 Skill</strong>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-content">
+      <p><strong>现状：</strong>AI 模型的升级不是向后兼容的。一个在 Claude 3.5 上表现完美的 Skill，升级到 Claude 4.6 后可能行为发生变化。这种"模型漂移"是 AI Coding 工程化面临的独特挑战。</p>
+      <p><strong>应对策略：</strong></p>
+      <ul>
+        <li><strong>Eval 驱动</strong>：为关键 Skills 建立 Eval 数据集。模型升级后跑一遍 Eval，快速发现行为变化。</li>
+        <li><strong>版本锁定</strong>：对生产环境使用的 Skills，锁定模型版本，升级前在测试环境验证。</li>
+        <li><strong>Thin Harness 原则</strong>：Skills 不依赖模型的特定行为细节，只依赖通用能力。越"厚"的 Skill 越脆弱。</li>
+      </ul>
+      <p><strong>结论：</strong>这是一个<strong>真实且目前没有完美解法</strong>的问题。Eval 是目前最好的应对策略，但也需要持续投入。对于个人用户而言，保持 Skill 的简洁和通用是最好的防御。</p>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <strong>风险 4：人才退化——过度依赖 AI，基础能力会不会退化？</strong>
+      <span class="accordion-arrow">▼</span>
+    </div>
+    <div class="accordion-content">
+      <p><strong>现状：</strong>这是最常被提起的担忧，也是最需要诚实面对的问题。当 AI 替你写了 90% 的代码，你的编程能力确实可能退化——就像导航 App 普及后，很多人失去了认路能力。</p>
+      <p><strong>但更准确的描述是"能力重构"而非"能力退化"：</strong></p>
+      <ul>
+        <li>退化的：手写代码的速度和语法记忆</li>
+        <li>增强的：系统设计能力、代码审查能力、需求定义能力</li>
+        <li>新增的：Harness 构建、Eval 设计、AI 协作的元能力</li>
+      </ul>
+      <p><strong>应对策略：</strong></p>
+      <ul>
+        <li><strong>保持"手感"</strong>：定期做不用 AI 的编码练习（比如速赛中偶尔尝试纯手工）</li>
+        <li><strong>深入理解</strong>：不只看 AI 的输出，理解它为什么这样写。Code Review 是最好的学习方式。</li>
+        <li><strong>认清趋势</strong>：就像没有人抱怨"计算器让我口算能力退化了"一样，某些"基础能力"的重要性确实在下降。关键是<strong>把时间投入到未来更有价值的能力上</strong>。</li>
+      </ul>
+      <p><strong>结论：</strong>与其纠结"能力退化"，不如关注"能力迁移"。AI 时代需要的是不同的能力组合，而不是旧能力的加强版。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 附录 ==================== -->
+<h2 id="appendix">附录</h2>
+
+<h3>A. 术语表</h3>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr>
+      <th>术语</th>
+      <th>英文</th>
+      <th>解释</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Agent</strong></td>
+      <td>Agent</td>
+      <td>能自主感知环境、做出决策、执行行动的 AI 系统。区别于简单的"聊天机器人"，Agent 有工具使用和多步推理能力。</td>
+    </tr>
+    <tr>
+      <td><strong>Harness</strong></td>
+      <td>Harness</td>
+      <td>Agent 的运行环境和控制系统。包括 Agentic Loop、Tool System、Memory、Guardrails、Hooks、Session 六大组件。让 Agent 的行为从随机变为可控可复现。</td>
+    </tr>
+    <tr>
+      <td><strong>Skill</strong></td>
+      <td>Skill</td>
+      <td>Claude Code 中的可复用工作流定义。一个目录 = SKILL.md（上下文）+ 规则 + 模板 + 示例。</td>
+    </tr>
+    <tr>
+      <td><strong>Eval</strong></td>
+      <td>Evaluation</td>
+      <td>AI 产品的质量评估体系。由 Data（测试数据）+ Task（任务定义）+ Scores（评分标准）三部分组成。用于替代传统 PRD 的验收功能。</td>
+    </tr>
+    <tr>
+      <td><strong>MCP</strong></td>
+      <td>Model Context Protocol</td>
+      <td>Anthropic 提出的开放协议，让 AI 模型能标准化地连接外部工具和数据源。类似于 AI 世界的"USB 接口"。</td>
+    </tr>
+    <tr>
+      <td><strong>CLAUDE.md</strong></td>
+      <td>CLAUDE.md</td>
+      <td>项目级的配置文件，定义 Agent 在该项目中的行为规范、上下文信息和约束条件。相当于"给 Agent 的入职手册"。</td>
+    </tr>
+    <tr>
+      <td><strong>FDE</strong></td>
+      <td>Forward Deployed Engineer</td>
+      <td>前线部署工程师。由 Palantir 首创的工程角色，特征是嵌入客户现场、写生产代码、对业务结果负责。</td>
+    </tr>
+    <tr>
+      <td><strong>Context Engineering</strong></td>
+      <td>Context Engineering</td>
+      <td>系统性地管理和优化 AI 模型输入上下文的工程实践。比 Prompt Engineering 更关注信息的结构化和持久化。</td>
+    </tr>
+    <tr>
+      <td><strong>Hooks</strong></td>
+      <td>Hooks</td>
+      <td>Agent 生命周期中的自定义钩子。可以在工具调用前后、会话开始结束等关键节点插入自定义逻辑。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>B. 工具推荐清单</h3>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr>
+      <th>场景</th>
+      <th>推荐工具</th>
+      <th>理由</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>终端 Agent 开发</td>
+      <td>Claude Code（MAX 订阅）</td>
+      <td>最强 Agent 能力，原生 Harness 支持，Skills 生态</td>
+    </tr>
+    <tr>
+      <td>IDE 内日常编码</td>
+      <td>Cursor Pro</td>
+      <td>VS Code 生态，Composer Agent 能力，性价比高</td>
+    </tr>
+    <tr>
+      <td>批量代码任务</td>
+      <td>Codex</td>
+      <td>云端沙盒执行，适合 CI/CD 集成</td>
+    </tr>
+    <tr>
+      <td>知识管理</td>
+      <td>Obsidian + Agent 插件</td>
+      <td>本地优先，Markdown 格式，与 Skills 体系天然兼容</td>
+    </tr>
+    <tr>
+      <td>团队沟通结构化</td>
+      <td>飞书 CLI（lark-cli）</td>
+      <td>比桌面控制快 10 倍，输出结构化，可管道处理</td>
+    </tr>
+    <tr>
+      <td>部署与发布</td>
+      <td>Cloudflare Pages</td>
+      <td>零配置部署，自动 HTTPS，边缘网络加速</td>
+    </tr>
+    <tr>
+      <td>深度研究</td>
+      <td>Claude Deep Research / Perplexity</td>
+      <td>多源交叉验证，自动引用，适合需求分析和技术选型</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>C. 参考资料</h3>
+
+<div style="margin:20px 0;padding:24px 28px;background:var(--bg-secondary);border-radius:var(--radius-lg);border:1px solid var(--border-color);">
+  <div style="margin-bottom:16px;">
+    <strong style="font-size:0.85rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;">行业观点</strong>
+    <ul style="margin:8px 0;padding-left:20px;line-height:2;">
+      <li><strong>OpenAI CPO on Evals</strong> — "Writing evals is the most important thing a PM can do in the AI era."</li>
+      <li><strong>Andrew Ng on AI Coding</strong> — 当 coding agent 把写代码提速 10 倍后，瓶颈转移到"决定做什么"</li>
+      <li><strong>Peter Pang on AI-First</strong> — 真正的 AI-First 不是给旧流程加 AI，而是围绕 Agent 重构工程系统</li>
+      <li><strong>Anthropic Claude Code 文档</strong> — Agent = Model + Harness 的技术框架</li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom:16px;">
+    <strong style="font-size:0.85rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;">技术资源</strong>
+    <ul style="margin:8px 0;padding-left:20px;line-height:2;">
+      <li><a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank">Claude Code 官方文档</a> — Harness 架构和 Skills 体系的权威参考</li>
+      <li><a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol</a> — MCP 协议官方文档</li>
+      <li><a href="https://cursor.com/" target="_blank">Cursor IDE</a> — AI-first 代码编辑器</li>
+    </ul>
+  </div>
+
+  <div>
+    <strong style="font-size:0.85rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;">延伸阅读</strong>
+    <ul style="margin:8px 0;padding-left:20px;line-height:2;">
+      <li><a href="../fde-deep-dive/index.html">FDE 落地可行性研究</a> — 本站 FDE 深度调研报告</li>
+      <li><a href="../fde-landing-guide/index.html">FDE 落地指南</a> — FDE 模式的实操落地路径</li>
+    </ul>
+  </div>
+</div>
+
+</article>
+</div>
+
+<!-- Right TOC -->
+<aside class="toc-sidebar" id="tocSidebar">
+  <div class="toc-title">本页大纲</div>
+  <a href="#executive-summary" class="toc-link active">执行摘要</a>
+  <a href="#ch1" class="toc-link">1. AI Coding 入门</a>
+  <a href="#ch1-2" class="toc-link sub">工具全景图</a>
+  <a href="#ch1-3" class="toc-link sub">2026 年拐点</a>
+  <a href="#ch2" class="toc-link">2. Prompt 到 Harness</a>
+  <a href="#ch2-2" class="toc-link sub">什么是 Harness</a>
+  <a href="#ch2-3" class="toc-link sub">Skills 体系</a>
+  <a href="#ch3" class="toc-link">3. PM 用 AI Coding</a>
+  <a href="#ch3-1" class="toc-link sub">Evals 取代 PRD</a>
+  <a href="#ch3-2" class="toc-link sub">Demo-first 开发</a>
+  <a href="#ch3-3" class="toc-link sub">生产者到判断者</a>
+  <a href="#ch4" class="toc-link">4. 团队工程化</a>
+  <a href="#ch5" class="toc-link">5. 实战案例</a>
+  <a href="#ch5-1" class="toc-link sub">60 分钟速赛</a>
+  <a href="#ch5-2" class="toc-link sub">PM 工作流变革</a>
+  <a href="#ch6" class="toc-link">6. 与 FDE 交叉</a>
+  <a href="#ch7" class="toc-link">7. 风险与诚实面对</a>
+  <a href="#appendix" class="toc-link">附录</a>
+</aside>
+
+</div><!-- /article-layout -->
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- Mobile sidebar toggle -->
+<button id="sidebarToggle" style="display:none;position:fixed;bottom:32px;left:16px;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:1rem;cursor:pointer;z-index:200;box-shadow:var(--shadow-md);" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+
+<script>
+// Theme toggle
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  if (savedTheme === 'dark') document.querySelector('.theme-toggle').textContent = '☀️';
+}
+
+// Accordion
+function toggleAccordion(header) {
+  const item = header.parentElement;
+  item.classList.toggle('open');
+}
+
+// Reading progress
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  document.getElementById('readingProgress').style.width = progress + '%';
+
+  // Back to top
+  const btn = document.getElementById('backToTop');
+  if (scrollTop > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+// Sidebar active state
+const sidebarLinks = document.querySelectorAll('.sidebar-link');
+const tocLinks = document.querySelectorAll('.toc-link');
+const sections = [];
+sidebarLinks.forEach(link => {
+  const id = link.getAttribute('href')?.replace('#','');
+  if (id) {
+    const el = document.getElementById(id);
+    if (el) sections.push({ id, el, link });
+  }
+});
+
+function updateActive() {
+  let current = '';
+  for (const s of sections) {
+    if (s.el.getBoundingClientRect().top <= 120) current = s.id;
+  }
+  sidebarLinks.forEach(l => l.classList.remove('active'));
+  tocLinks.forEach(l => l.classList.remove('active'));
+  if (current) {
+    const activeLink = document.querySelector(`.sidebar-link[href="#${current}"]`);
+    const activeToc = document.querySelector(`.toc-link[href="#${current}"]`);
+    if (activeLink) activeLink.classList.add('active');
+    if (activeToc) activeToc.classList.add('active');
+  }
+}
+window.addEventListener('scroll', updateActive);
+
+// Mobile sidebar toggle visibility
+function checkMobile() {
+  document.getElementById('sidebarToggle').style.display = window.innerWidth <= 900 ? 'flex' : 'none';
+}
+window.addEventListener('resize', checkMobile);
+checkMobile();
+</script>
+
+</body>
+</html>
