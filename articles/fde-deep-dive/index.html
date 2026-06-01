@@ -561,6 +561,21 @@
   <li><strong>边际成本递减</strong>：后续客户遇到类似问题时，FDE 直接调用平台原语，不用重写。<strong>每一次部署的成本都比上一次低</strong></li>
 </ol>
 
+<p>这套机制有一条简单但严格的操作纪律——<strong>"三次法则"</strong>：如果同一个功能被 3 个客户需要，它就必须进入核心产品库，由总部研发团队（Dev）收编、重构并标准化。Dev 和 FDE（Delta）的代码职责边界也非常清晰：</p>
+
+<div class="compare-grid">
+  <div class="compare-card" style="border-top:3px solid #3b82f6;">
+    <h4>Dev（总部研发）</h4>
+    <p style="font-size:0.95rem;line-height:1.7;margin-bottom:0;"><strong>一种能力，服务多个客户</strong><br>写可扩展、可复用的标准化代码。负责把 FDE 验证过的模式抽象进平台。</p>
+  </div>
+  <div class="compare-card" style="border-top:3px solid #f59e0b;">
+    <h4>Delta（FDE）</h4>
+    <p style="font-size:0.95rem;line-height:1.7;margin-bottom:0;"><strong>一个客户，多种能力</strong><br>在客户现场快速构建解决方案。写的代码是<strong>"脚手架而非房子"</strong>——有明确的时间约束（如 90 天冲刺），每个季度把定制代码中的共性部分回收为可复用配置或模板。</p>
+  </div>
+</div>
+
+<p>a16z 对此有一个精准的警告：<strong>"'我们稍后会产品化'最终一定会变成'我们从来没有腾出手来做这件事'。"</strong> 如果不设定明确的回收机制和时间约束，FDE 模式必然退化为带着好看前端的外包公司。</p>
+
 <p>一位 Palantir 前工程师的总结精准地点出了这套模式的本质：</p>
 
 <blockquote>
@@ -1005,6 +1020,47 @@
   <div class="callout-title">⚠️ 关键判断</div>
   类似捷安高科这样的企业，其业务结构可能比 Palantir 的多数客户场景<strong>更适合</strong> FDE 模式——因为交付物不是一个 IT 系统，而是包含硬件、软件、课程、培训在内的"完整教学解决方案"。这种交付复杂度远超传统软件项目。<strong>任何交付物涉及多专业维度、强现场依赖的 B 端企业，都应认真评估 FDE 模式的适用性。</strong>
 </div>
+
+<h4>a16z 压力测试：你的公司真的适合 FDE 吗？</h4>
+
+<p>维度评估只是第一步。a16z 在一篇深度分析中提出了<strong>五个更尖锐的压力测试</strong>，用来区分"真正适合 FDE"和"只是给驻场外包换了个名字"的企业：</p>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr><th style="width:25%;">压力测试</th><th>核心问题</th><th>健康信号</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>① 平台边界</strong></td>
+      <td>共享产品在哪里结束，客户定制代码从哪里开始？能画出清晰的分界线吗？</td>
+      <td>有明确的"核心平台 + 扩展层"架构，不是所有代码混在一起</td>
+    </tr>
+    <tr>
+      <td><strong>② 部署时间</strong></td>
+      <td>从签约到首次生产使用，需要多少工程师月？哪些必须定制、哪些可以配置？</td>
+      <td>随着平台成熟，部署时间逐年缩短——如果不是，飞轮没在转</td>
+    </tr>
+    <tr>
+      <td><strong>③ 利润率轨迹</strong></td>
+      <td>一个成熟客户第 3 年的利润率是什么样的？FDE 投入是否随时间显著下降？</td>
+      <td>第 3 年利润率远高于第 1 年，证明定制正在沉淀为平台能力</td>
+    </tr>
+    <tr>
+      <td><strong>④ 规模化压力</strong></td>
+      <td>如果明年签下 50 个客户，什么先崩——招聘？培训？产品？</td>
+      <td>瓶颈在招聘而非产品能力——产品已经能承载增量</td>
+    </tr>
+    <tr>
+      <td><strong>⑤ 拒绝定制的能力</strong></td>
+      <td>你如何决定<em>不</em>做某个定制？拒绝的标准是什么？</td>
+      <td>有清晰的判断标准：这个定制能否在 3 个客户间复用？不能就拒绝</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>a16z 的核心判断：<strong>对定制工作说"不"的意愿，往往是把产品公司和"有漂亮前端的服务公司"区分开来的关键。</strong>如果上面五个问题有三个以上答不出来，说明公司还没有做好 FDE 模式的基础设施准备——此时贸然推行 FDE，只会加速滑入"定制化陷阱"。</p>
 
 <h3 id="ch4-2">4.2 企业 AI 战略 × FDE 理念的映射</h3>
 
@@ -1484,6 +1540,8 @@
   <li><a href="https://tao-hpu.medium.com/forward-deployed-engineers-ais-answer-to-the-saas-customization-paradox-1223e6425b6f" target="_blank">Medium — FDE: AI's Answer to the SaaS Customization Paradox</a></li>
   <li><a href="https://medium.com/activated-thinker/a-comprehensive-analysis-of-palantirs-forward-deployed-engineering-model-4502a036b5e4" target="_blank">Medium — A Comprehensive Analysis of Palantir's FDE Model (2026.4)</a></li>
   <li><a href="https://www.palantir.com/docs/foundry/ontology/core-concepts" target="_blank">Palantir 官方文档 — Ontology Core Concepts（Interface & Polymorphism）</a></li>
+  <li><a href="https://www.53ai.com/news/Palantir/2026012004619.html" target="_blank">a16z — 为什么所有公司都在学 Palantir，却几乎都走偏了（FDE 非银弹）</a></li>
+  <li><a href="https://blog.csdn.net/Keylink_con/article/details/158505031" target="_blank">CSDN — Palantir FDE 揭秘：代码后的特种部队（三层工具链 & 三次法则）</a></li>
 </ul>
 
 <h3>C. 数据来源说明</h3>
