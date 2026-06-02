@@ -198,6 +198,15 @@
   <strong>FDE 是被派驻到客户现场、能写生产级代码、对业务结果（而非功能交付）负责、并将一线经验反向沉淀进公司产品平台的工程师。</strong>
 </div>
 
+<p>这个定义并非事后总结。FDE 模式的发明者、前 Palantir 高管、后任 OpenAI 首席研究官的 <strong>Bob McGrew</strong>，在 Y Combinator 的一次分享中给出了更原始的表述：</p>
+
+<blockquote>
+FDE 是这样一种技术人员：他驻扎在客户现场，带着公司现有的产品，在产品团队的支持下，想方设法交付一个对客户真正有价值的成果——用真正奏效的方式把软件落地。<br>
+<span style="font-size:0.85rem;color:var(--text-tertiary);">—— Bob McGrew，FDE 模式发明者，前 OpenAI 首席研究官（Y Combinator《The FDE Playbook for AI Startups》）</span>
+</blockquote>
+
+<p>McGrew 还有一句更精炼的概括：FDE 的本质，是 Palantir 破解了<strong>"把那些不可规模化的事，规模化地做出来"</strong>（doing things that don't scale, at scale）这道算术题。这句话点破了 FDE 模式表面矛盾的内核——既要现场定制的"不可规模化"，又要平台沉淀的"规模化"。</p>
+
 <p>拆开来看，这个定义有四个关键词，缺任何一个都不是真正的 FDE：</p>
 
 <div class="stat-grid">
@@ -292,6 +301,27 @@
   <div class="callout-title">📌 招聘视角的数据</div>
   据 Bloomberry 对 1,000+ 个 FDE 岗位的分析，FDE 的<strong>基础薪资中位数为 $210K/年</strong>，比同级别传统软件工程师高 25-40%。Palantir Staff 级别的 FDE 总薪酬（含股权）可达 $630K+。这个溢价本质上是在为"复合型能力"定价——市场上能同时满足以上六项能力的人极其稀少。
 </div>
+
+<h4>反直觉的发现：拉开 FDE 差距的不是代码，是客户调研</h4>
+
+<p>上面六项能力里，最容易被低估的是"业务理解力"和"沟通与共情"。一份 2026 年的实证研究给出了量化证据。Perspective AI 调研了 <strong>1,500 名在职 FDE</strong>，得出三个反直觉的结论：</p>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-number">2.4×</div>
+    <div class="stat-label">顶尖 FDE 投入在<strong>结构化客户调研</strong>上的时间，是末位 1/4 的 2.4 倍——这个差距比工程经验、模型熟练度、领域专精都更能预测绩效</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">60 / 30 / 10</div>
+    <div class="stat-label">FDE 时间分配的中位数：<strong>60% 面向客户</strong>、30% 构建、10% 内部事务。写代码远不是工作的大头</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">71%</div>
+    <div class="stat-label">FDE 来自<strong>产品工程或咨询背景</strong>，而非 ML 研究——顶尖者靠客户调研能力而非建模深度胜出</div>
+  </div>
+</div>
+
+<p>这组数据颠覆了"FDE = 超级程序员"的刻板印象。<strong>真正区分顶尖和平庸 FDE 的，不是谁代码写得快，而是谁更系统地搞懂了客户到底要什么。</strong>对想转型 FDE 的人来说，这是一个解放性的结论：你不需要先成为顶级工程师，但你必须学会像顶级产品经理那样做结构化的客户调研。这也解释了为什么 Palantir 的实施单元里，"听"（Echo）和"做"（Delta）是分开的两个角色——把最难的"听懂客户"单独拎出来，作为一项可训练、可评估的核心能力。</p>
 
 <h3 id="ch0-4">FDE 跟其他岗位有什么区别？</h3>
 
@@ -883,12 +913,38 @@
 
 <p>这一薪酬溢价的底层逻辑是：FDE 同时拥有工程能力和业务理解，这种复合型人才在市场上极度稀缺。</p>
 
+<h4>2026 年的转折点：顶级实验室把"部署"独立成公司</h4>
+
+<p>如果说招聘数据反映的是"FDE 这个岗位变热"，那么 2026 年 5 月发生的两件事，标志着整个行业的战略共识发生了质变：<strong>部署能力，而非模型能力，正在成为决胜的关键。</strong>OpenAI 和 Anthropic 在同一周内，几乎以同样的方式下注：</p>
+
+<div class="compare-grid">
+  <div class="compare-card" style="border-top:3px solid #10b981;">
+    <h4>OpenAI Deployment Company</h4>
+    <ul style="font-size:0.92rem;line-height:1.7;margin-bottom:0;">
+      <li>融资 <strong>$40 亿</strong>，新公司估值 <strong>$100 亿</strong>（OpenAI 控股）</li>
+      <li>TPG 领投，Bain Capital、Brookfield、McKinsey、高盛等 19 家机构参与</li>
+      <li>收购应用 AI 咨询公司 <strong>Tomoro</strong>，开局即带来约 150 名 FDE 和部署专家</li>
+      <li>向 PE 出资方承诺 5 年期 17.5% 年化回报</li>
+    </ul>
+  </div>
+  <div class="compare-card" style="border-top:3px solid #8b5cf6;">
+    <h4>Anthropic 企业 AI 合资公司</h4>
+    <ul style="font-size:0.92rem;line-height:1.7;margin-bottom:0;">
+      <li>规模 <strong>$15 亿</strong>，Anthropic、黑石、Hellman &amp; Friedman 各出资 $3 亿</li>
+      <li>高盛、Apollo、General Atlantic、红杉等跟投</li>
+      <li>核心打法：把工程师<strong>嵌入中型企业内部</strong>，围绕 Agent 重构工作流</li>
+      <li>借助投资方旗下的被投企业网络，直取中端市场</li>
+    </ul>
+  </div>
+</div>
+
+<p>两件事指向同一个判断：<strong>光有最强的模型不够，谁能把模型真正部署进企业、产生确定性的业务结果，谁才能赢。</strong>而"把模型部署进企业"这件事的执行主体，正是 FDE。值得注意的是，这两家合资公司都瞄准了 Palantir 的传统腹地——咨询与系统集成市场，Fortune 直接将其形容为"对咨询行业的正面开火"。这也从侧面印证了本文反复强调的观点：FDE 不是给传统咨询打补丁，而是用"产品化交付"取代"卖人天"。</p>
+
 <h4>全球扩展：FDE 走出硅谷</h4>
 
-<p>FDE 模式正在快速突破硅谷的地理边界：</p>
+<p>除了顶级实验室的战略下注，FDE 模式也在快速突破硅谷的地理边界：</p>
 <ul>
-  <li><strong>OpenAI 收购 Tomoro</strong>（英国总部，2023 年成立），该公司在英国、亚洲和澳大利亚拥有 150 名 FDE</li>
-  <li><strong>欧洲</strong>：10Clouds（波兰）等公司开始在欧洲市场推广 FDE 概念</li>
+  <li><strong>欧洲</strong>：10Clouds（波兰）等公司开始在欧洲市场推广 FDE 概念；Anthropic 合资公司主攻欧美中端市场</li>
   <li><strong>亚洲</strong>：多家公司开始从亚洲招聘高级 FDE 人才，印度和东南亚成为重要人才来源</li>
   <li><strong>中国</strong>：尚未出现以"FDE"命名的岗位，但类 FDE 实践已在头部 AI 公司中出现（见下节分析）</li>
 </ul>
@@ -1545,6 +1601,11 @@
   <li><a href="https://www.palantir.com/docs/foundry/ontology/core-concepts" target="_blank">Palantir 官方文档 — Ontology Core Concepts（Interface & Polymorphism）</a></li>
   <li><a href="https://www.53ai.com/news/Palantir/2026012004619.html" target="_blank">a16z — 为什么所有公司都在学 Palantir，却几乎都走偏了（FDE 非银弹）</a></li>
   <li><a href="https://blog.csdn.net/Keylink_con/article/details/158505031" target="_blank">CSDN — Palantir FDE 揭秘：代码后的特种部队（三层工具链 & 三次法则）</a></li>
+  <li><a href="https://www.ycombinator.com/library/Mt-the-fde-playbook-for-ai-startups-with-bob-mcgrew" target="_blank">Y Combinator — The FDE Playbook for AI Startups with Bob McGrew（FDE 发明者本人讲解）</a></li>
+  <li><a href="https://openai.com/index/openai-launches-the-deployment-company/" target="_blank">OpenAI 官方 — Launches the OpenAI Deployment Company（$40 亿融资 / $100 亿估值）</a></li>
+  <li><a href="https://www.blackstone.com/news/press/anthropic-partners-with-blackstone-hellman-friedman-and-goldman-sachs-to-launch-enterprise-ai-services-firm/" target="_blank">Blackstone 官方 — Anthropic 联合黑石/高盛成立 $15 亿企业 AI 服务公司</a></li>
+  <li><a href="https://getperspective.ai/blog/how-forward-deployed-engineers-run-customer-discovery-2026" target="_blank">Perspective AI — 1,500 名 FDE 调研：顶尖者结构化客户调研时间是末位 2.4 倍</a></li>
+  <li><a href="https://www.aol.com/articles/job-postings-tech-role-grown-185134480.html" target="_blank">AOL/Indeed — FDE 岗位从 643（2025.4）增至 5,330（2026.4），年增 729%</a></li>
 </ul>
 
 <h3>C. 数据来源说明</h3>
